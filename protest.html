@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en" data-texture="amber">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Game Hub - Professional Gaming Portal</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --bg-dark: #05070c;
+            --bg-surface: #0b0f19;
+            --bg-surface-elevated: #121826;
+            --card-bg: rgba(15, 22, 36, 0.85);
+            --card-border: rgba(255, 255, 255, 0.08);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            
+            --accent-primary: #6366f1;
+            --accent-hover: #4f46e5;
+            --accent-glow: rgba(99, 102, 241, 0.4);
+
+            --glow-color-primary: rgba(245, 158, 11, 0.5);
+            --glow-color-secondary: rgba(217, 119, 6, 0.25);
+            --glow-border: rgba(245, 158, 11, 0.75);
+            --texture-badge: #f59e0b;
+
+            --modal-bg: #090d16;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html[data-texture="amber"] {
+            --glow-color-primary: rgba(245, 158, 11, 0.5);
+            --glow-border: rgba(245, 158, 11, 0.75);
+            --texture-badge: #f59e0b;
+        }
+
+        html[data-texture="cyber"] {
+            --glow-color-primary: rgba(6, 182, 212, 0.55);
+            --glow-border: rgba(6, 182, 212, 0.8);
+            --texture-badge: #06b6d4;
+        }
+
+        html[data-texture="emerald"] {
+            --glow-color-primary: rgba(16, 185, 129, 0.5);
+            --glow-border: rgba(16, 185, 129, 0.75);
+            --texture-badge: #10b981;
+        }
+
+        html[data-texture="crimson"] {
+            --glow-color-primary: rgba(244, 63, 94, 0.55);
+            --glow-border: rgba(244, 63, 94, 0.8);
+            --texture-badge: #f43f5e;
+        }
+
+        html[data-texture="amethyst"] {
+            --glow-color-primary: rgba(168, 85, 247, 0.55);
+            --glow-border: rgba(168, 85, 247, 0.8);
+            --texture-badge: #a855f7;
+        }
+
+        /* INTRO SCREEN */
+        .intro-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: #04060a;
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+            animation: fadeOutIntro 0.5s cubic-bezier(0.4, 0, 0.2, 1) 3.0s forwards;
+            will-change: opacity, visibility;
+            overflow: hidden;
+        }
+
+        .intro-bg-glow {
+            position: absolute;
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(168, 85, 247, 0.15) 50%, transparent 70%);
+            filter: blur(50px);
+            border-radius: 50%;
+            animation: pulseGlow 2s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        .cube-container {
+            width: 80px; height: 80px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: spin3DSmooth 3.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            will-change: transform;
+        }
+
+        .cube-face {
+            position: absolute; width: 80px; height: 80px;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1.5px solid rgba(99, 102, 241, 0.8);
+            box-shadow: 0 0 18px rgba(99, 102, 241, 0.4);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: #ffffff; border-radius: 14px;
+            backface-visibility: visible;
+        }
+
+        .cube-face.front  { transform: translateZ(40px); }
+        .cube-face.back   { transform: rotateY(180deg) translateZ(40px); }
+        .cube-face.right  { transform: rotateY(90deg) translateZ(40px); }
+        .cube-face.left   { transform: rotateY(-90deg) translateZ(40px); }
+        .cube-face.top    { transform: rotateX(90deg) translateZ(40px); }
+        .cube-face.bottom { transform: rotateX(-90deg) translateZ(40px); }
+
+        .intro-title {
+            margin-top: 35px; font-size: 1.8rem; font-weight: 800; letter-spacing: 5px;
+            color: #ffffff; text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff, #a5b4fc, #6366f1);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(99, 102, 241, 0.6); z-index: 2;
+        }
+
+        .intro-sub {
+            color: #94a3b8; font-size: 0.8rem; letter-spacing: 3px; margin-top: 8px;
+            text-transform: uppercase; font-weight: 600; z-index: 2;
+        }
+
+        .intro-progress-bar {
+            position: absolute; bottom: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, #6366f1, #a855f7, #38bdf8);
+            width: 0%; animation: loadProgress 3.0s linear forwards;
+            box-shadow: 0 0 12px #6366f1;
+        }
+
+        @keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
+        @keyframes pulseGlow { 0% { transform: scale(0.95); opacity: 0.5; } 100% { transform: scale(1.25); opacity: 0.9; } }
+        @keyframes spin3DSmooth {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(0.4, 0.4, 0.4); }
+            50% { transform: rotateX(180deg) rotateY(360deg) rotateZ(90deg) scale3d(1.1, 1.1, 1.1); }
+            100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(180deg) scale3d(1, 1, 1); }
+        }
+        @keyframes fadeOutIntro { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-dark); color: var(--text-primary);
+            min-height: 100vh; overflow-x: hidden; width: 100%;
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+                linear-gradient(to bottom, rgba(5, 7, 12, 0.85), rgba(5, 7, 12, 1));
+            background-attachment: fixed; transition: var(--transition-smooth);
+        }
+
+        body.mobile-mode {
+            max-width: 414px; height: 850px; max-height: 90vh; margin: 20px auto;
+            border: 12px solid #161b26; border-radius: 40px;
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95);
+            position: relative; overflow-y: auto; overflow-x: hidden;
+        }
+
+        body.mobile-mode .intro-screen,
+        body.mobile-mode .entry-overlay,
+        body.mobile-mode .modal-backdrop { position: absolute; width: 100%; height: 100%; }
+
+        body.locked { overflow: hidden; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
+
+        /* OVERLAYS & CARDS */
+        .entry-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 7, 12, 0.92); backdrop-filter: blur(20px);
+            z-index: 99999; display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .entry-overlay.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .entry-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px; width: 90%; max-width: 460px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative; overflow: hidden;
+        }
+
+        .entry-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--texture-badge));
+        }
+
+        .entry-card h2 { font-size: 1.5rem; font-weight: 800; margin-top: 10px; }
+        .entry-card h2 span { color: var(--accent-primary); }
+        .entry-card p { color: var(--text-secondary); font-size: 0.86rem; margin: 6px 0 20px 0; }
+
+        .typewriter-box {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.25rem; font-weight: 700;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: var(--radius-md);
+            padding: 20px 16px; margin: 20px 0;
+            min-height: 80px; display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+            letter-spacing: 0.5px; line-height: 1.5;
+        }
+
+        .typing-cursor {
+            display: inline-block; width: 10px; height: 1.2rem; background: var(--accent-primary);
+            margin-left: 5px; animation: blink 0.7s infinite; vertical-align: middle;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .avatar-grid { display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; }
+        .avatar-option {
+            font-size: 1.8rem; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+            background: rgba(255, 255, 255, 0.04); border: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px; cursor: pointer; transition: var(--transition-smooth);
+        }
+        .avatar-option:hover, .avatar-option.selected {
+            border-color: var(--texture-badge); background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px) scale(1.08);
+        }
+
+        .form-group { text-align: left; margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group input {
+            width: 100%; padding: 13px 16px; background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md);
+            color: var(--text-primary); font-size: 0.95rem; outline: none; transition: var(--transition-smooth);
+        }
+        .form-group input:focus { border-color: var(--accent-primary); box-shadow: 0 0 15px var(--accent-glow); background: rgba(255, 255, 255, 0.06); }
+
+        .btn-submit {
+            width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
+            color: white; border: none; border-radius: var(--radius-md); font-weight: 700; font-size: 0.95rem; cursor: pointer;
+            transition: var(--transition-smooth); box-shadow: 0 8px 20px var(--accent-glow);
+        }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 28px var(--accent-glow); }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center; padding: 18px 5%;
+            background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06); position: sticky; top: 0; z-index: 100;
+            width: 100%;
+        }
+
+        .brand-logo {
+            display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px;
+            color: var(--text-primary); text-decoration: none;
+        }
+        .brand-logo i { color: var(--accent-primary); background: rgba(99, 102, 241, 0.15); padding: 9px; border-radius: 12px; font-size: 1.1rem; }
+        .brand-logo span { color: var(--accent-primary); }
+
+        .nav-actions { display: flex; align-items: center; gap: 8px; }
+
+        .user-pill {
+            display: flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08); padding: 7px 12px; border-radius: 30px;
+            font-size: 0.82rem; font-weight: 600;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-primary); width: 38px; height: 38px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-smooth);
+        }
+        .icon-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--glow-border); transform: translateY(-2px); }
+
+        .hero { text-align: center; padding: 50px 20px 25px 20px; max-width: 800px; margin: 0 auto; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.3); color: #818cf8; font-size: 0.78rem; font-weight: 700;
+            padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px;
+        }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 14px; }
+        .hero h1 span { background: linear-gradient(135deg, #a5b4fc, #6366f1, var(--texture-badge)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; font-weight: 400; }
+
+        .controls-bar {
+            max-width: 1200px; margin: 20px auto 10px auto; padding: 0 4%;
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; width: 100%;
+        }
+        .search-box { flex: 1; min-width: 220px; position: relative; }
+        .search-box i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.95rem; }
+        .search-box input {
+            width: 100%; padding: 12px 16px 12px 44px; background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md);
+            color: var(--text-primary); font-size: 0.9rem; outline: none; transition: var(--transition-smooth);
+        }
+        .search-box input:focus { border-color: var(--glow-border); background: rgba(255, 255, 255, 0.06); }
+
+        .filter-tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; max-width: 100%; -webkit-overflow-scrolling: touch; }
+        .filter-chip {
+            background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary); padding: 8px 16px; border-radius: 20px;
+            font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: var(--transition-smooth);
+        }
+        .filter-chip:hover, .filter-chip.active { background: var(--accent-primary); color: white; border-color: var(--accent-primary); box-shadow: 0 4px 14px var(--accent-glow); }
+
+        /* GAMES SECTION & GRID UPDATES (Max 3 items per row & Bigger cards) */
+        .games-section { padding: 20px 4% 80px 4%; max-width: 1200px; margin: 0 auto; width: 100%; overflow: hidden; }
+        .games-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 28px; 
+            margin-top: 15px; 
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .games-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 640px) {
+            .games-grid { grid-template-columns: 1fr; }
+        }
+
+        /* GAME CARD - 3D Dynamic Tilt and In-place Expand */
+        .game-card {
+            background: var(--card-bg); 
+            border: 1px solid var(--card-border); 
+            border-radius: var(--radius-lg);
+            padding: 28px; 
+            position: relative; 
+            backdrop-filter: blur(16px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: transform 0.25s ease-out, border-color 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .game-card::before, .game-card::after { display: none !important; }
+
+        .game-card:hover {
+            border-color: var(--glow-border);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px var(--glow-border);
+            z-index: 2;
+        }
+
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+
+        /* 3D LOGO ICON BOX FIX */
+        .card-icon-box {
+            width: 58px; height: 58px; border-radius: 16px; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; color: var(--accent-primary); transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hovering over card causes the Logo to pop out in 3D */
+        .game-card:hover .card-icon-box { 
+            background: rgba(255, 255, 255, 0.12); 
+            border-color: var(--glow-border); 
+            color: var(--texture-badge);
+            transform: translateZ(20px) rotateY(-12deg) rotateX(10deg) scale(1.1);
+            box-shadow: -5px 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color-primary);
+        }
+
+        .card-badge {
+            background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #34d399; font-size: 0.72rem; font-weight: 800; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.5px;
+        }
+
+        .card-title { font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+        .card-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 22px; }
+
+        .play-btn-action {
+            width: 100%; padding: 13px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
+            color: white; border: none; border-radius: var(--radius-md); font-weight: 700; font-size: 0.9rem; cursor: pointer;
+            transition: var(--transition-smooth); box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .play-btn-action:hover { box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5); }
+
+        .rating-widget { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+        .rating-btns { display: flex; gap: 8px; margin-bottom: 8px; }
+        .vote-chip {
+            flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 7px; border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-muted); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: var(--transition-smooth);
+        }
+        .like-chip:hover, .like-chip.voted { background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #f87171; }
+        .dislike-chip:hover, .dislike-chip.voted { background: rgba(148, 163, 184, 0.15); border-color: #94a3b8; color: #cbd5e1; }
+
+        .progress-bar-bg { width: 100%; height: 5px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; overflow: hidden; margin-top: 6px; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #ec4899, #ef4444); border-radius: 10px; transition: width 0.4s ease; }
+        .rating-meta { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; font-weight: 600; }
+
+        /* MODAL & SETTINGS OVERFLOW FIX FOR MOBILE */
+        .modal-backdrop {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 7, 12, 0.88); backdrop-filter: blur(16px); z-index: 10000;
+            display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .modal-backdrop.active { opacity: 1; pointer-events: auto; }
+
+        .modal-box {
+            background: var(--modal-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-lg);
+            padding: 24px 20px; width: 92%; max-width: 480px; position: relative; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+            max-height: 85vh; overflow-y: auto; overflow-x: hidden;
+        }
+
+        .modal-close {
+            position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.05); border: none;
+            color: var(--text-muted); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: var(--transition-smooth); z-index: 5;
+        }
+        .modal-close:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.12); }
+
+        .settings-nav { display: flex; gap: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px; margin-bottom: 20px; }
+        .settings-tab-btn { background: none; border: none; color: var(--text-muted); font-weight: 700; font-size: 0.85rem; padding: 8px 14px; border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition-smooth); }
+        .settings-tab-btn.active { color: var(--text-primary); background: rgba(255, 255, 255, 0.08); }
+
+        .texture-preset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        @media (max-width: 480px) {
+            .texture-preset-grid { grid-template-columns: 1fr; }
+        }
+
+        .texture-preset-card {
+            background: rgba(255, 255, 255, 0.03); border: 1.5px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md);
+            padding: 12px; cursor: pointer; transition: var(--transition-smooth); display: flex; flex-direction: column; gap: 6px;
+        }
+        .texture-preset-card:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.06); }
+        .texture-preset-card.selected { border-color: var(--accent-primary); background: rgba(99, 102, 241, 0.12); box-shadow: 0 0 15px var(--accent-glow); }
+        .preset-preview-circle { width: 20px; height: 20px; border-radius: 50%; display: inline-block; border: 2px solid rgba(255,255,255,0.2); }
+        .preset-title { font-size: 0.84rem; font-weight: 700; color: var(--text-primary); }
+        .preset-desc { font-size: 0.72rem; color: var(--text-muted); }
+
+        .game-input-row { display: flex; gap: 10px; margin-top: 12px; }
+        .game-input-row input { flex: 1; padding: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); color: white; outline: none; width: 100%; }
+        .game-input-row input:focus { border-color: var(--texture-badge); }
+
+        .sub-btn-group { display: flex; gap: 8px; margin-top: 8px; }
+        .sub-btn { flex: 1; padding: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-secondary); border-radius: var(--radius-sm); font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: var(--transition-smooth); }
+        .sub-btn.active { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
+
+        .game-status-box { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); padding: 14px; border-radius: var(--radius-md); text-align: center; font-weight: 600; margin: 16px 0; font-size: 0.9rem; }
+
+        .powerup-row { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+        .powerup-item { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 8px 12px; border-radius: 10px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: var(--transition-smooth); }
+        .powerup-item:hover:not(:disabled) { border-color: var(--texture-badge); transform: translateY(-2px); }
+        .powerup-item:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        /* GAME UI STYLES */
+        .ttt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 220px; margin: 15px auto; }
+        .ttt-cell { width: 65px; height: 65px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-smooth); }
+        .ttt-cell:hover { background: rgba(255,255,255,0.1); border-color: var(--texture-badge); }
+        .ttt-cell.x { color: #6366f1; }
+        .ttt-cell.o { color: #f43f5e; }
+
+        .rps-options { display: flex; justify-content: center; gap: 14px; margin: 15px 0; }
+        .rps-btn { font-size: 2rem; padding: 12px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: var(--transition-smooth); width: 75px; height: 75px; display: flex; align-items: center; justify-content: center; }
+        .rps-btn:hover { transform: scale(1.08); border-color: var(--texture-badge); background: rgba(255,255,255,0.1); }
+
+        .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 260px; margin: 15px auto; }
+        .memory-card { width: 55px; height: 55px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.3s ease; transform-style: preserve-3d; }
+        .memory-card.flipped { background: rgba(99,102,241,0.2); border-color: #6366f1; }
+
+        #snakeCanvas { background: #030508; border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; display: block; margin: 10px auto; max-width: 100%; touch-action: none; }
+
+        footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid rgba(255, 255, 255, 0.04); }
+        footer span { color: var(--accent-primary); font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <!-- FIRST INTRO SCREEN -->
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-bg-glow"></div>
+        <div class="cube-container">
+            <div class="cube-face front"><i class="fa-solid fa-gamepad"></i></div>
+            <div class="cube-face back"><i class="fa-solid fa-vr-cardboard"></i></div>
+            <div class="cube-face right"><i class="fa-solid fa-trophy"></i></div>
+            <div class="cube-face left"><i class="fa-solid fa-ghost"></i></div>
+            <div class="cube-face top"><i class="fa-solid fa-bolt"></i></div>
+            <div class="cube-face bottom"><i class="fa-solid fa-fire"></i></div>
+        </div>
+        <div class="intro-title">Ultimate Game Hub</div>
+        <div class="intro-sub">Initializing Portal...</div>
+        <div class="intro-progress-bar"></div>
+    </div>
+
+    <!-- ENTRY FORM OVERLAY -->
+    <div class="entry-overlay" id="entryOverlay">
+        <div class="entry-card">
+            <div style="font-size: 2.2rem; color: var(--accent-primary);"><i class="fa-solid fa-gamepad"></i></div>
+            <h2>Welcome To <span>Ash Games</span></h2>
+            <p>Setup your gaming avatar to start playing</p>
+
+            <form id="entryForm" onsubmit="return handleEntrySubmit(event)">
+                <div class="avatar-grid">
+                    <div class="avatar-option selected" onclick="selectAvatar('🤖', this)">🤖</div>
+                    <div class="avatar-option" onclick="selectAvatar('🥷', this)">🥷</div>
+                    <div class="avatar-option" onclick="selectAvatar('🧙‍♂️', this)">🧙‍♂️</div>
+                    <div class="avatar-option" onclick="selectAvatar('👑', this)">👑</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="userName">Player Name</label>
+                    <input type="text" id="userName" placeholder="Enter name..." required minlength="2">
+                </div>
+
+                <div class="form-group">
+                    <label for="userAge">Age (Years)</label>
+                    <input type="number" id="userAge" placeholder="Enter age" required min="3" max="120">
+                </div>
+
+                <button type="submit" class="btn-submit">Enter Portal 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MID INTRO OVERLAY -->
+    <div class="entry-overlay hide" id="midIntroOverlay">
+        <div class="entry-card" style="max-width: 520px;">
+            <div style="font-size: 2.8rem; color: var(--accent-primary); margin-bottom: 10px;">
+                <i class="fa-solid fa-terminal"></i>
+            </div>
+            <h3 style="font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary);">
+                System Verification
+            </h3>
+
+            <div class="typewriter-box">
+                <span id="typedText"></span><span class="typing-cursor"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="brand-logo">
+            <i class="fa-solid fa-gamepad"></i>
+            ULTIMATE <span>GAME HUB</span>
+        </a>
+
+        <div class="nav-actions">
+            <div class="user-pill" id="navUserDisplay">🤖 Guest</div>
+            <button class="icon-btn" id="deviceToggleBtn" onclick="toggleDeviceView()" title="Switch PC/Mobile Mode" aria-label="Switch Device View">
+                <i class="fa-solid fa-desktop" id="deviceIcon"></i>
+            </button>
+            <button class="icon-btn" id="soundToggleBtn" onclick="toggleSound()" title="Sound FX" aria-label="Toggle Sound">
+                <i class="fa-solid fa-volume-high"></i>
+            </button>
+            <button class="icon-btn" onclick="openSettingsModal()" title="Settings & Texture Library" aria-label="Settings">
+                <i class="fa-solid fa-sliders"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> High-Performance Browser Gaming</div>
+        <h1>Next-Gen Arcade <span>Experience</span></h1>
+        <p>Ultra-smooth mini-games, dynamic card effects, and fully customizable backlight textures.</p>
+    </section>
+
+    <!-- SEARCH & FILTER CONTROLS -->
+    <div class="controls-bar">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search games..." oninput="filterGames()" aria-label="Search games">
+        </div>
+
+        <div class="filter-tabs">
+            <button class="filter-chip active" onclick="setCategoryFilter('all', this)">All Games</button>
+            <button class="filter-chip" onclick="setCategoryFilter('playable', this)">Playable Now</button>
+            <button class="filter-chip" onclick="setCategoryFilter('arcade', this)">Arcade</button>
+            <button class="filter-chip" onclick="setCategoryFilter('strategy', this)">Strategy</button>
+        </div>
+    </div>
+
+    <!-- GAMES SECTION GRID (Updated with 3 max per row & enlarged card size) -->
+    <section class="games-section">
+        <div class="games-grid" id="gamesGrid">
+            
+            <!-- 1. GUESS THE NUMBER -->
+            <div class="game-card" data-category="playable puzzle" data-title="guess the number" onclick="openGameModal('guess-number')">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon-box"><i class="fa-solid fa-hashtag"></i></div>
+                        <span class="card-badge">PLAYABLE</span>
+                    </div>
+                    <h3 class="card-title">Guess The Number</h3>
+                    <p class="card-desc">Hot/Cold indicators, custom range, tries limit, power-up lifelines & AI player modes.</p>
+                </div>
+
+                <div>
+                    <button class="play-btn-action"><i class="fa-solid fa-play"></i> Play Now</button>
+                    
+                    <div class="rating-widget" onclick="event.stopPropagation()">
+                        <div class="rating-btns">
+                            <button class="vote-chip like-chip" onclick="castVote('guess-number', 'like')">
+                                <i class="fa-solid fa-heart"></i> <span id="like-count-guess-number">154</span>
+                            </button>
+                            <button class="vote-chip dislike-chip" onclick="castVote('guess-number', 'dislike')">
+                                <i class="fa-solid fa-thumbs-down"></i> <span id="dislike-count-guess-number">6</span>
+                            </button>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-guess-number" style="width: 96%;"></div></div>
+                        <div class="rating-meta"><span>Approval</span><span id="percent-guess-number">96% Liked</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. TIC TAC TOE -->
+            <div class="game-card" data-category="playable strategy" data-title="tic tac toe" onclick="openGameModal('tictactoe')">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon-box"><i class="fa-solid fa-xmark"></i></div>
+                        <span class="card-badge">PLAYABLE</span>
+                    </div>
+                    <h3 class="card-title">Tic Tac Toe Pro</h3>
+                    <p class="card-desc">Classic 3x3 grid strategy with Minimax intelligent AI and local 2-player mode.</p>
+                </div>
+
+                <div>
+                    <button class="play-btn-action"><i class="fa-solid fa-play"></i> Play Now</button>
+                    
+                    <div class="rating-widget" onclick="event.stopPropagation()">
+                        <div class="rating-btns">
+                            <button class="vote-chip like-chip" onclick="castVote('tictactoe', 'like')"><i class="fa-solid fa-heart"></i> <span id="like-count-tictactoe">92</span></button>
+                            <button class="vote-chip dislike-chip" onclick="castVote('tictactoe', 'dislike')"><i class="fa-solid fa-thumbs-down"></i> <span id="dislike-count-tictactoe">8</span></button>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-tictactoe" style="width: 92%;"></div></div>
+                        <div class="rating-meta"><span>Approval</span><span id="percent-tictactoe">92% Liked</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. ROCK PAPER SCISSORS -->
+            <div class="game-card" data-category="playable arcade" data-title="rock paper scissors" onclick="openGameModal('rps')">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon-box"><i class="fa-solid fa-hand-back-fist"></i></div>
+                        <span class="card-badge">PLAYABLE</span>
+                    </div>
+                    <h3 class="card-title">Cyber Showdown</h3>
+                    <p class="card-desc">Fast-paced Rock Paper Scissors with streak combo score multiplier & slick animations.</p>
+                </div>
+
+                <div>
+                    <button class="play-btn-action"><i class="fa-solid fa-play"></i> Play Now</button>
+                    
+                    <div class="rating-widget" onclick="event.stopPropagation()">
+                        <div class="rating-btns">
+                            <button class="vote-chip like-chip" onclick="castVote('rps', 'like')"><i class="fa-solid fa-heart"></i> <span id="like-count-rps">118</span></button>
+                            <button class="vote-chip dislike-chip" onclick="castVote('rps', 'dislike')"><i class="fa-solid fa-thumbs-down"></i> <span id="dislike-count-rps">4</span></button>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-rps" style="width: 97%;"></div></div>
+                        <div class="rating-meta"><span>Approval</span><span id="percent-rps">97% Liked</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. MEMORY CARD MATCH -->
+            <div class="game-card" data-category="playable puzzle" data-title="memory card match" onclick="openGameModal('memory')">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon-box"><i class="fa-solid fa-brain"></i></div>
+                        <span class="card-badge">PLAYABLE</span>
+                    </div>
+                    <h3 class="card-title">Memory Matrix</h3>
+                    <p class="card-desc">Flip holographic tiles, locate matching pairs and beat your lowest timer score.</p>
+                </div>
+
+                <div>
+                    <button class="play-btn-action"><i class="fa-solid fa-play"></i> Play Now</button>
+                    
+                    <div class="rating-widget" onclick="event.stopPropagation()">
+                        <div class="rating-btns">
+                            <button class="vote-chip like-chip" onclick="castVote('memory', 'like')"><i class="fa-solid fa-heart"></i> <span id="like-count-memory">88</span></button>
+                            <button class="vote-chip dislike-chip" onclick="castVote('memory', 'dislike')"><i class="fa-solid fa-thumbs-down"></i> <span id="dislike-count-memory">5</span></button>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-memory" style="width: 94%;"></div></div>
+                        <div class="rating-meta"><span>Approval</span><span id="percent-memory">94% Liked</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. RETRO SNAKE -->
+            <div class="game-card" data-category="playable arcade" data-title="classic snake" onclick="openGameModal('snake')">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon-box"><i class="fa-solid fa-staff-snake"></i></div>
+                        <span class="card-badge">PLAYABLE</span>
+                    </div>
+                    <h3 class="card-title">Neon Snake</h3>
+                    <p class="card-desc">Guide the neon serpent, gather energy pills, and survive in an expanding arena.</p>
+                </div>
+
+                <div>
+                    <button class="play-btn-action"><i class="fa-solid fa-play"></i> Play Now</button>
+                    
+                    <div class="rating-widget" onclick="event.stopPropagation()">
+                        <div class="rating-btns">
+                            <button class="vote-chip like-chip" onclick="castVote('snake', 'like')"><i class="fa-solid fa-heart"></i> <span id="like-count-snake">175</span></button>
+                            <button class="vote-chip dislike-chip" onclick="castVote('snake', 'dislike')"><i class="fa-solid fa-thumbs-down"></i> <span id="dislike-count-snake">9</span></button>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-snake" style="width: 95%;"></div></div>
+                        <div class="rating-meta"><span>Approval</span><span id="percent-snake">95% Liked</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SETTINGS MODAL (With Mobile Overflow Fixes) -->
+    <div class="modal-backdrop" id="settingsModal" onclick="closeOnOutsideSettings(event)">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeSettingsModal()" aria-label="Close Settings">✖</button>
+            <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 12px;"><i class="fa-solid fa-sliders"></i> Portal Settings</h2>
+            
+            <div class="settings-nav">
+                <button class="settings-tab-btn active" onclick="switchSettingsTab('textureTab', this)">Texture Library</button>
+                <button class="settings-tab-btn" onclick="switchSettingsTab('profileTab', this)">Player Profile</button>
+            </div>
+
+            <div id="textureTab" class="settings-content">
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 14px;">Select an accent glow color preset:</p>
+
+                <div class="texture-preset-grid">
+                    <div class="texture-preset-card selected" id="preset-amber" onclick="applyTexturePreset('amber')">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <span class="preset-title">Warm Amber</span>
+                            <span class="preset-preview-circle" style="background: #f59e0b;"></span>
+                        </div>
+                        <span class="preset-desc">Warm gold theme and sleek accents.</span>
+                    </div>
+
+                    <div class="texture-preset-card" id="preset-cyber" onclick="applyTexturePreset('cyber')">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <span class="preset-title">Cyber Neon</span>
+                            <span class="preset-preview-circle" style="background: #06b6d4;"></span>
+                        </div>
+                        <span class="preset-desc">Electric Cyan backlight theme.</span>
+                    </div>
+
+                    <div class="texture-preset-card" id="preset-emerald" onclick="applyTexturePreset('emerald')">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <span class="preset-title">Emerald Mint</span>
+                            <span class="preset-preview-circle" style="background: #10b981;"></span>
+                        </div>
+                        <span class="preset-desc">Lush emerald green glow contrast.</span>
+                    </div>
+
+                    <div class="texture-preset-card" id="preset-crimson" onclick="applyTexturePreset('crimson')">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <span class="preset-title">Crimson Ember</span>
+                            <span class="preset-preview-circle" style="background: #f43f5e;"></span>
+                        </div>
+                        <span class="preset-desc">Ruby red flame accents with dark vibe.</span>
+                    </div>
+
+                    <div class="texture-preset-card" id="preset-amethyst" onclick="applyTexturePreset('amethyst')">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <span class="preset-title">Royal Amethyst</span>
+                            <span class="preset-preview-circle" style="background: #a855f7;"></span>
+                        </div>
+                        <span class="preset-desc">Deep violet theme feel.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="profileTab" class="settings-content" style="display: none;">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <div id="profAvatar" style="font-size: 3rem;">🤖</div>
+                    <h3 id="profName" style="margin-top: 4px; font-weight: 700;">Player</h3>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin: 15px 0;">
+                    <div style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px; border-radius: 12px; text-align: center;">
+                        <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-primary);" id="statPlayed">0</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Played</div>
+                    </div>
+                    <div style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px; border-radius: 12px; text-align: center;">
+                        <div style="font-size: 1.4rem; font-weight: 800; color: #10b981;" id="statWon">0</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Won</div>
+                    </div>
+                </div>
+
+                <button class="btn-submit" style="background: linear-gradient(135deg, #ef4444, #dc2626);" onclick="resetProfile()">Logout / Reset Profile 🚪</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLAY GAME MODAL CONTAINER -->
+    <div class="modal-backdrop" id="gameModal" onclick="closeOnOutsideClick(event)">
+        <div class="modal-box" id="modalGameBox">
+            <button class="modal-close" onclick="closeGameModal()" aria-label="Close Game">✖</button>
+            <div id="activeGameContainer"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 <span>Ultimate Game Hub</span>. Designed with Premium Aesthetics.</p>
+    </footer>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        setTimeout(() => {
+            const intro = document.getElementById('introScreen');
+            if (intro) intro.remove();
+        }, 3500);
+
+        let soundEnabled = true;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        function playTypingTick() {
+            if (!soundEnabled) return;
+            initAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                let now = audioCtx.currentTime;
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(1100 + Math.random() * 250, now);
+                gain.gain.setValueAtTime(0.04, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+
+                osc.start(now);
+                osc.stop(now + 0.03);
+            } catch (e) {}
+        }
+
+        function speakGreeting(name) {
+            if (!soundEnabled) return;
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+
+                const runSpeech = () => {
+                    const voices = window.speechSynthesis.getVoices();
+                    const text = `Hello ${name}, welcome to the game hub!`;
+                    const utterance = new SpeechSynthesisUtterance(text);
+
+                    const femaleVoice = voices.find(v => 
+                        v.lang.startsWith('en') && 
+                        (v.name.includes('Female') || v.name.includes('Zira') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Victoria') || v.name.includes('Natural'))
+                    ) || voices.find(v => v.lang.startsWith('en'));
+
+                    if (femaleVoice) {
+                        utterance.voice = femaleVoice;
+                    }
+
+                    utterance.rate = 0.85;
+                    utterance.pitch = 1.0;
+                    utterance.volume = 1.0;
+
+                    window.speechSynthesis.speak(utterance);
+                };
+
+                if (window.speechSynthesis.getVoices().length === 0) {
+                    window.speechSynthesis.onvoiceschanged = runSpeech;
+                } else {
+                    runSpeech();
+                }
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('soundToggleBtn');
+            btn.innerHTML = soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+            if (soundEnabled) playSound('click');
+        }
+
+        function toggleDeviceView() {
+            playSound('click');
+            const isMob = document.body.classList.toggle('mobile-mode');
+            const icon = document.getElementById('deviceIcon');
+            icon.className = isMob ? 'fa-solid fa-mobile-screen-button' : 'fa-solid fa-desktop';
+        }
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            initAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                let now = audioCtx.currentTime;
+
+                if (type === 'click') {
+                    osc.frequency.setValueAtTime(450, now);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+                    osc.start(now); osc.stop(now + 0.05);
+                } else if (type === 'win') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(300, now);
+                    osc.frequency.setValueAtTime(600, now + 0.1);
+                    osc.frequency.setValueAtTime(900, now + 0.2);
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                    osc.start(now); osc.stop(now + 0.4);
+                } else if (type === 'lose') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(300, now);
+                    osc.frequency.setValueAtTime(150, now + 0.15);
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now); osc.stop(now + 0.3);
+                }
+            } catch (e) {}
+        }
+
+        function applyTexturePreset(presetKey) {
+            playSound('click');
+            document.documentElement.setAttribute('data-texture', presetKey);
+            
+            document.querySelectorAll('.texture-preset-card').forEach(card => card.classList.remove('selected'));
+            const selectedCard = document.getElementById(`preset-${presetKey}`);
+            if (selectedCard) selectedCard.classList.add('selected');
+
+            try { localStorage.setItem('hubSelectedTexture', presetKey); } catch(e){}
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                const savedPreset = localStorage.getItem('hubSelectedTexture') || 'amber';
+                applyTexturePreset(savedPreset);
+            } catch(e){}
+            checkSavedUser();
+            updateStatsUI();
+            init3DTilt();
+        });
+
+        /* 3D TILT EFFECT FOR GAME CARDS */
+        function init3DTilt() {
+            document.querySelectorAll('.game-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -10;
+                    const rotateY = ((x - centerX) / centerX) * 10;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                });
+            });
+        }
+
+        let selectedAvatar = '🤖';
+        function selectAvatar(emoji, el) {
+            playSound('click');
+            selectedAvatar = emoji;
+            document.querySelectorAll('.avatar-option').forEach(a => a.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function checkSavedUser() {
+            try {
+                const name = localStorage.getItem('hubUserName');
+                const avatar = localStorage.getItem('hubUserAvatar') || '🤖';
+                if (name) {
+                    document.getElementById('entryOverlay').classList.add('hide');
+                    updateProfileUI(name, avatar);
+                } else {
+                    document.body.classList.add('locked');
+                }
+            } catch(e){ document.body.classList.add('locked'); }
+        }
+
+        function handleEntrySubmit(e) {
+            if(e) e.preventDefault();
+            playSound('click');
+            const name = document.getElementById('userName').value.trim();
+            const age = document.getElementById('userAge').value;
+            if(!name || !age) return false;
+
+            try {
+                localStorage.setItem('hubUserName', name);
+                localStorage.setItem('hubUserAge', age);
+                localStorage.setItem('hubUserAvatar', selectedAvatar);
+            } catch(e){}
+
+            document.getElementById('entryOverlay').classList.add('hide');
+            updateProfileUI(name, selectedAvatar);
+            runMidIntroSequence(name);
+
+            return false;
+        }
+
+        function runMidIntroSequence(name) {
+            const midOverlay = document.getElementById('midIntroOverlay');
+            const typedTextSpan = document.getElementById('typedText');
+            
+            midOverlay.classList.remove('hide');
+            typedTextSpan.innerText = '';
+
+            const fullText = `Welcome ${name} to the ultimate game hub!`;
+            let index = 0;
+
+            function typeCharacter() {
+                if (index < fullText.length) {
+                    typedTextSpan.innerText += fullText.charAt(index);
+                    playTypingTick();
+                    index++;
+                    setTimeout(typeCharacter, 65);
+                } else {
+                    setTimeout(() => {
+                        speakGreeting(name);
+                        setTimeout(() => {
+                            midOverlay.classList.add('hide');
+                            document.body.classList.remove('locked');
+                        }, 2400);
+                    }, 300);
+                }
+            }
+
+            setTimeout(typeCharacter, 400);
+        }
+
+        function updateProfileUI(name, avatar) {
+            document.getElementById('navUserDisplay').innerHTML = `${avatar} ${name}`;
+            document.getElementById('profAvatar').innerText = avatar;
+            document.getElementById('profName').innerText = name;
+        }
+
+        function resetProfile() {
+            playSound('click');
+            if(confirm("Logout and clear data?")) {
+                try { localStorage.clear(); } catch(e){}
+                location.reload();
+            }
+        }
+
+        function openSettingsModal() { playSound('click'); document.getElementById('settingsModal').classList.add('active'); }
+        function closeSettingsModal() { playSound('click'); document.getElementById('settingsModal').classList.remove('active'); }
+        function closeOnOutsideSettings(e) { if(e.target.id === 'settingsModal') closeSettingsModal(); }
+
+        function switchSettingsTab(tabId, btn) {
+            playSound('click');
+            document.querySelectorAll('.settings-content').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.settings-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).style.display = 'block';
+            btn.classList.add('active');
+        }
+
+        function filterGames() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.game-card').forEach(card => {
+                const title = card.getAttribute('data-title') || '';
+                card.style.display = title.includes(query) ? 'flex' : 'none';
+            });
+        }
+
+        function setCategoryFilter(category, btn) {
+            playSound('click');
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.game-card').forEach(card => {
+                const cats = card.getAttribute('data-category') || '';
+                if (category === 'all' || cats.includes(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        let currentSnakeInterval = null;
+
+        function openGameModal(gameId = 'guess-number') {
+            playSound('click');
+            const container = document.getElementById('activeGameContainer');
+            document.getElementById('gameModal').classList.add('active');
+            
+            if (currentSnakeInterval) clearInterval(currentSnakeInterval);
+
+            if (gameId === 'guess-number') {
+                container.innerHTML = `
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Guess The Number</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 16px;">Set your parameters and start playing!</p>
+
+                    <div id="setupSection">
+                        <div style="margin-bottom: 12px;">
+                            <label style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Game Mode</label>
+                            <div class="sub-btn-group">
+                                <button type="button" class="sub-btn active" id="modeBtnPlayer" onclick="setSubMode('player')">Player Guesses</button>
+                                <button type="button" class="sub-btn" id="modeBtnAI" onclick="setSubMode('ai')">AI Guesses</button>
+                            </div>
+                        </div>
+
+                        <div id="aiTypeContainer" style="margin-bottom: 12px; display: none;">
+                            <label style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">AI Strategy</label>
+                            <div class="sub-btn-group">
+                                <button type="button" class="sub-btn active" id="aiSmartBtn" onclick="setAiStrategy('smart')">🧠 Smart Search</button>
+                                <button type="button" class="sub-btn" id="aiRandomBtn" onclick="setAiStrategy('random')">🎲 Random</button>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 12px;">
+                            <label style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Range Limit (Min - Max)</label>
+                            <div class="game-input-row">
+                                <input type="number" id="minRangeInput" value="1">
+                                <input type="number" id="maxRangeInput" value="100">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 16px;">
+                            <label style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Max Attempts (0 = Unlimited)</label>
+                            <div class="game-input-row">
+                                <input type="number" id="maxTriesInput" value="7" min="0">
+                            </div>
+                        </div>
+
+                        <button class="play-btn-action" onclick="startGamePlay()">Launch Game 🚀</button>
+                    </div>
+
+                    <div id="playerControls" style="display: none;">
+                        <div class="game-input-row">
+                            <input type="number" id="userGuessInput" placeholder="Enter guess..." onkeydown="if(event.key==='Enter') submitPlayerGuess()">
+                            <button class="play-btn-action" style="width: auto; padding: 0 20px;" onclick="submitPlayerGuess()">Submit</button>
+                        </div>
+
+                        <div class="powerup-row">
+                            <button class="powerup-item" id="btnEvenOdd" onclick="useEvenOddHint()">💡 Even/Odd Hint</button>
+                            <button class="powerup-item" id="btnShrink" onclick="useShrinkHint()">✂️ Shrink Range</button>
+                        </div>
+                    </div>
+
+                    <div id="aiControls" style="display: none;" class="sub-btn-group">
+                        <button class="sub-btn" style="background: #ef4444; color: white;" onclick="handleAIFeedback('smaller')">Lower 📉</button>
+                        <button class="sub-btn" style="background: #10b981; color: white;" onclick="handleAIFeedback('correct')">Correct 🎉</button>
+                        <button class="sub-btn" style="background: #3b82f6; color: white;" onclick="handleAIFeedback('bigger')">Higher 📈</button>
+                    </div>
+
+                    <div class="game-status-box" id="gameMessage">Choose settings and press Launch Game!</div>
+                    <button class="btn-submit" id="restartBtn" style="display: none; background: #10b981;" onclick="resetToSetup()">Play Again 🔄</button>
+                `;
+                resetToSetup();
+            } 
+            else if (gameId === 'tictactoe') {
+                container.innerHTML = `
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Tic Tac Toe Pro</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Choose mode & outsmart your opponent!</p>
+                    <div class="sub-btn-group" style="margin-bottom:12px;">
+                        <button class="sub-btn active" id="tttVsAi" onclick="initTTT('ai')">vs AI 🤖</button>
+                        <button class="sub-btn" id="tttVsP2" onclick="initTTT('pvp')">2 Players 👥</button>
+                    </div>
+                    <div class="ttt-grid" id="tttGrid"></div>
+                    <div class="game-status-box" id="tttStatus">Player X's Turn</div>
+                    <button class="btn-submit" style="background:#6366f1;" onclick="initTTT(tttMode)">Reset Match 🔄</button>
+                `;
+                initTTT('ai');
+            }
+            else if (gameId === 'rps') {
+                container.innerHTML = `
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Cyber Showdown</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Rock, Paper, Scissors - Build your win streak!</p>
+                    <div style="text-align:center; font-weight:800; color:var(--texture-badge); margin-bottom:10px;">Streak: <span id="rpsStreak">0</span> 🔥</div>
+                    <div class="rps-options">
+                        <button class="rps-btn" onclick="playRPS('🪨')">🪨</button>
+                        <button class="rps-btn" onclick="playRPS('📄')">📄</button>
+                        <button class="rps-btn" onclick="playRPS('✂️')">✂️</button>
+                    </div>
+                    <div class="game-status-box" id="rpsStatus">Choose your weapon to start!</div>
+                `;
+                rpsStreak = 0;
+            }
+            else if (gameId === 'memory') {
+                container.innerHTML = `
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Memory Matrix</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Match all card pairs in minimum attempts!</p>
+                    <div class="memory-grid" id="memoryGrid"></div>
+                    <div class="game-status-box" id="memoryStatus">Flips: 0 | Pairs Left: 6</div>
+                    <button class="btn-submit" style="background:#6366f1;" onclick="initMemory()">Restart Matrix 🔄</button>
+                `;
+                initMemory();
+            }
+            else if (gameId === 'snake') {
+                container.innerHTML = `
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Neon Snake</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 8px;">Use Arrow keys, swipe on canvas, or buttons!</p>
+                    <canvas id="snakeCanvas" width="280" height="280"></canvas>
+                    <div class="sub-btn-group" style="margin-top:8px;">
+                        <button class="sub-btn" onclick="changeSnakeDir('UP')">⬆️</button>
+                    </div>
+                    <div class="sub-btn-group">
+                        <button class="sub-btn" onclick="changeSnakeDir('LEFT')">⬅️</button>
+                        <button class="sub-btn" onclick="changeSnakeDir('DOWN')">⬇️</button>
+                        <button class="sub-btn" onclick="changeSnakeDir('RIGHT')">➡️</button>
+                    </div>
+                    <div class="game-status-box" id="snakeStatus">Score: 0</div>
+                    <button class="btn-submit" style="background:#10b981;" onclick="initSnake()">Start / Restart Game 🐍</button>
+                `;
+                initSnake();
+            }
+        }
+
+        function closeGameModal() { 
+            playSound('click'); 
+            document.getElementById('gameModal').classList.remove('active'); 
+            if (currentSnakeInterval) clearInterval(currentSnakeInterval);
+        }
+        function closeOnOutsideClick(e) { if(e.target.id === 'gameModal') closeGameModal(); }
+
+        /* GUESS THE NUMBER LOGIC */
+        let activeSubMode = 'player', aiStrategy = 'smart';
+        let minVal = 1, maxVal = 100, secretNumber = 0, attemptsUsed = 0, maxTriesLimit = 0;
+        let aiLow = 1, aiHigh = 100, currentAiGuess = 0;
+
+        function setSubMode(mode) {
+            playSound('click');
+            activeSubMode = mode;
+            document.getElementById('modeBtnPlayer').classList.toggle('active', mode==='player');
+            document.getElementById('modeBtnAI').classList.toggle('active', mode==='ai');
+            document.getElementById('aiTypeContainer').style.display = (mode==='ai') ? 'block' : 'none';
+        }
+
+        function setAiStrategy(strat) {
+            playSound('click');
+            aiStrategy = strat;
+            document.getElementById('aiSmartBtn').classList.toggle('active', strat==='smart');
+            document.getElementById('aiRandomBtn').classList.toggle('active', strat==='random');
+        }
+
+        function resetToSetup() {
+            document.getElementById('setupSection').style.display = 'block';
+            document.getElementById('playerControls').style.display = 'none';
+            document.getElementById('aiControls').style.display = 'none';
+            document.getElementById('restartBtn').style.display = 'none';
+            document.getElementById('btnEvenOdd').disabled = false;
+            document.getElementById('btnShrink').disabled = false;
+            document.getElementById('gameMessage').innerText = 'Choose settings and press Launch Game!';
+        }
+
+        function startGamePlay() {
+            playSound('click');
+            minVal = parseInt(document.getElementById('minRangeInput').value) || 1;
+            maxVal = parseInt(document.getElementById('maxRangeInput').value) || 100;
+            maxTriesLimit = parseInt(document.getElementById('maxTriesInput').value) || 0;
+
+            if(minVal >= maxVal) { alert("Min must be smaller than Max"); return; }
+            document.getElementById('setupSection').style.display = 'none';
+            attemptsUsed = 0;
+
+            if(activeSubMode === 'player') {
+                secretNumber = Math.floor(Math.random() * (maxVal - minVal + 1)) + minVal;
+                document.getElementById('playerControls').style.display = 'block';
+                document.getElementById('gameMessage').innerText = `Number set (${minVal}-${maxVal}). Start guessing!`;
+            } else {
+                aiLow = minVal; aiHigh = maxVal;
+                document.getElementById('aiControls').style.display = 'flex';
+                makeAiGuess();
+            }
+        }
+
+        function makeAiGuess() {
+            currentAiGuess = (aiStrategy==='smart') ? Math.floor((aiLow + aiHigh)/2) : Math.floor(Math.random()*(aiHigh-aiLow+1))+aiLow;
+            document.getElementById('gameMessage').innerText = `🤖 AI Guess: ${currentAiGuess}?`;
+        }
+
+        function submitPlayerGuess() {
+            let guess = parseInt(document.getElementById('userGuessInput').value);
+            if(isNaN(guess)) return;
+            attemptsUsed++;
+
+            if(guess === secretNumber) {
+                playSound('win');
+                if(typeof confetti === 'function') confetti({ particleCount: 100, spread: 70 });
+                document.getElementById('gameMessage').innerText = `🎉 Correct in ${attemptsUsed} tries!`;
+                recordGameResult(true); endGame();
+            } else {
+                if(maxTriesLimit > 0 && attemptsUsed >= maxTriesLimit) {
+                    playSound('lose');
+                    document.getElementById('gameMessage').innerText = `💥 Game Over! Number was ${secretNumber}.`;
+                    recordGameResult(false); endGame(); return;
+                }
+                playSound('lose');
+                let diff = Math.abs(guess - secretNumber);
+                let text = diff <= 4 ? "🔥 Super Hot!" : (diff <= 12 ? "♨️ Warm!" : "❄️ Freezing!");
+                let dir = guess < secretNumber ? "📈 Higher" : "📉 Lower";
+                document.getElementById('gameMessage').innerText = `${text} Go ${dir}`;
+            }
+            document.getElementById('userGuessInput').value = '';
+        }
+
+        function useEvenOddHint() {
+            playSound('click');
+            document.getElementById('gameMessage').innerText = `💡 Secret is ${secretNumber % 2 === 0 ? 'EVEN' : 'ODD'}`;
+            document.getElementById('btnEvenOdd').disabled = true;
+        }
+
+        function useShrinkHint() {
+            playSound('click');
+            let l = Math.max(minVal, secretNumber - 5), h = Math.min(maxVal, secretNumber + 5);
+            document.getElementById('gameMessage').innerText = `✂️ Number is between ${l} and ${h}`;
+            document.getElementById('btnShrink').disabled = true;
+        }
+
+        function handleAIFeedback(feedback) {
+            attemptsUsed++;
+            if(feedback === 'correct') {
+                playSound('win');
+                document.getElementById('gameMessage').innerText = `🎉 AI Guessed correctly in ${attemptsUsed} tries!`;
+                recordGameResult(false); endGame(); return;
+            }
+            playSound('click');
+            if(feedback === 'smaller') aiHigh = currentAiGuess - 1;
+            else if(feedback === 'bigger') aiLow = currentAiGuess + 1;
+            makeAiGuess();
+        }
+
+        function endGame() {
+            document.getElementById('playerControls').style.display = 'none';
+            document.getElementById('aiControls').style.display = 'none';
+            document.getElementById('restartBtn').style.display = 'block';
+        }
+
+        /* TIC TAC TOE LOGIC */
+        let tttBoard = ['', '', '', '', '', '', '', '', ''], tttTurn = 'X', tttMode = 'ai', tttActive = true;
+
+        function initTTT(mode) {
+            tttMode = mode; tttBoard = ['', '', '', '', '', '', '', '', '']; tttTurn = 'X'; tttActive = true;
+            document.getElementById('tttVsAi').classList.toggle('active', mode==='ai');
+            document.getElementById('tttVsP2').classList.toggle('active', mode==='pvp');
+            renderTTT();
+            document.getElementById('tttStatus').innerText = "Player X's Turn";
+        }
+
+        function renderTTT() {
+            const grid = document.getElementById('tttGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            tttBoard.forEach((val, idx) => {
+                const cell = document.createElement('div');
+                cell.className = `ttt-cell ${val.toLowerCase()}`;
+                cell.innerText = val;
+                cell.onclick = () => makeTTTMove(idx);
+                grid.appendChild(cell);
+            });
+        }
+
+        function makeTTTMove(idx) {
+            if (tttBoard[idx] !== '' || !tttActive) return;
+            playSound('click');
+            tttBoard[idx] = tttTurn;
+            renderTTT();
+
+            if (checkTTTWinner(tttBoard, tttTurn)) {
+                playSound('win');
+                document.getElementById('tttStatus').innerText = `🎉 Player ${tttTurn} Wins!`;
+                if (tttTurn === 'X') recordGameResult(true);
+                tttActive = false; return;
+            }
+            if (!tttBoard.includes('')) {
+                document.getElementById('tttStatus').innerText = "🤝 It's a Draw!";
+                tttActive = false; return;
+            }
+
+            tttTurn = tttTurn === 'X' ? 'O' : 'X';
+            document.getElementById('tttStatus').innerText = `Player ${tttTurn}'s Turn`;
+
+            if (tttMode === 'ai' && tttTurn === 'O' && tttActive) {
+                setTimeout(makeTTTAiMove, 400);
+            }
+        }
+
+        function makeTTTAiMove() {
+            let emptyIndices = tttBoard.map((val, idx) => val === '' ? idx : null).filter(val => val !== null);
+            let bestMove = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+            
+            for (let idx of emptyIndices) {
+                let tempBoard = [...tttBoard]; tempBoard[idx] = 'O';
+                if (checkTTTWinner(tempBoard, 'O')) { bestMove = idx; break; }
+            }
+            makeTTTMove(bestMove);
+        }
+
+        function checkTTTWinner(board, player) {
+            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            return wins.some(w => w.every(idx => board[idx] === player));
+        }
+
+        /* ROCK PAPER SCISSORS LOGIC */
+        let rpsStreak = 0;
+        function playRPS(playerChoice) {
+            playSound('click');
+            const choices = ['🪨', '📄', '✂️'];
+            const aiChoice = choices[Math.floor(Math.random() * choices.length)];
+            const status = document.getElementById('rpsStatus');
+
+            if (playerChoice === aiChoice) {
+                status.innerText = `Tie! Both chose ${playerChoice}`;
+            } else if (
+                (playerChoice==='🪨' && aiChoice==='✂️') ||
+                (playerChoice==='📄' && aiChoice==='🪨') ||
+                (playerChoice==='✂️' && aiChoice==='📄')
+            ) {
+                playSound('win');
+                rpsStreak++;
+                status.innerText = `You Won! ${playerChoice} beats ${aiChoice}`;
+                recordGameResult(true);
+            } else {
+                playSound('lose');
+                rpsStreak = 0;
+                status.innerText = `AI Won! ${aiChoice} beats ${playerChoice}`;
+                recordGameResult(false);
+            }
+            document.getElementById('rpsStreak').innerText = rpsStreak;
+        }
+
+        /* MEMORY MATRIX LOGIC */
+        let memoryCards = [], memoryFlipped = [], memoryPairsFound = 0, memoryFlips = 0;
+        function initMemory() {
+            const icons = ['🔥', '⚡', '🎮', '🚀', '👑', '💎'];
+            memoryCards = [...icons, ...icons].sort(() => Math.random() - 0.5);
+            memoryFlipped = []; memoryPairsFound = 0; memoryFlips = 0;
+            const grid = document.getElementById('memoryGrid');
+            grid.innerHTML = '';
+
+            memoryCards.forEach((icon, idx) => {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                card.dataset.index = idx;
+                card.dataset.icon = icon;
+                card.innerText = '❓';
+                card.onclick = () => flipMemoryCard(card, idx);
+                grid.appendChild(card);
+            });
+            updateMemoryStatus();
+        }
+
+        function flipMemoryCard(card, idx) {
+            if (memoryFlipped.length >= 2 || card.classList.contains('flipped')) return;
+            playSound('click');
+            card.classList.add('flipped');
+            card.innerText = card.dataset.icon;
+            memoryFlipped.push({ card, idx });
+
+            if (memoryFlipped.length === 2) {
+                memoryFlips++;
+                updateMemoryStatus();
+                if (memoryFlipped[0].card.dataset.icon === memoryFlipped[1].card.dataset.icon) {
+                    playSound('win');
+                    memoryPairsFound++;
+                    memoryFlipped = [];
+                    updateMemoryStatus();
+                    if (memoryPairsFound === 6) {
+                        playSound('win');
+                        if(typeof confetti === 'function') confetti({ particleCount: 100, spread: 70 });
+                        document.getElementById('memoryStatus').innerText = `🎉 Mastered in ${memoryFlips} flips!`;
+                        recordGameResult(true);
+                    }
+                } else {
+                    setTimeout(() => {
+                        memoryFlipped.forEach(item => {
+                            item.card.classList.remove('flipped');
+                            item.card.innerText = '❓';
+                        });
+                        memoryFlipped = [];
+                    }, 700);
+                }
+            }
+        }
+
+        function updateMemoryStatus() {
+            document.getElementById('memoryStatus').innerText = `Flips: ${memoryFlips} | Pairs Left: ${6 - memoryPairsFound}`;
+        }
+
+        /* NEON SNAKE LOGIC */
+        let snake = [], snakeDir = 'RIGHT', snakeScore = 0;
+        let touchStartX = 0, touchStartY = 0;
+
+        function initSnake() {
+            const canvas = document.getElementById('snakeCanvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            snake = [{x: 5, y: 5}, {x: 4, y: 5}, {x: 3, y: 5}];
+            snakeDir = 'RIGHT'; snakeScore = 0;
+            spawnSnakeFood();
+            
+            if (currentSnakeInterval) clearInterval(currentSnakeInterval);
+            currentSnakeInterval = setInterval(() => updateSnake(ctx), 120);
+
+            window.onkeydown = (e) => {
+                if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) {
+                    e.preventDefault();
+                }
+                changeSnakeDir(e.key.replace('Arrow', '').toUpperCase());
+            };
+
+            // Touch support for Mobile
+            canvas.ontouchstart = (e) => {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            };
+
+            canvas.ontouchend = (e) => {
+                const diffX = e.changedTouches[0].clientX - touchStartX;
+                const diffY = e.changedTouches[0].clientY - touchStartY;
+
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (diffX > 20) changeSnakeDir('RIGHT');
+                    else if (diffX < -20) changeSnakeDir('LEFT');
+                } else {
+                    if (diffY > 20) changeSnakeDir('DOWN');
+                    else if (diffY < -20) changeSnakeDir('UP');
+                }
+            };
+        }
+
+        function changeSnakeDir(dir) {
+            if(dir==='UP' && snakeDir!=='DOWN') snakeDir='UP';
+            if(dir==='DOWN' && snakeDir!=='UP') snakeDir='DOWN';
+            if(dir==='LEFT' && snakeDir!=='RIGHT') snakeDir='LEFT';
+            if(dir==='RIGHT' && snakeDir!=='LEFT') snakeDir='RIGHT';
+        }
+
+        function spawnSnakeFood() {
+            snakeFood = { x: Math.floor(Math.random() * 14), y: Math.floor(Math.random() * 14) };
+        }
+
+        function updateSnake(ctx) {
+            let head = { ...snake[0] };
+            if(snakeDir==='UP') head.y--;
+            if(snakeDir==='DOWN') head.y++;
+            if(snakeDir==='LEFT') head.x--;
+            if(snakeDir==='RIGHT') head.x++;
+
+            if(head.x < 0 || head.x >= 14 || head.y < 0 || head.y >= 14 || snake.some(s=>s.x===head.x && s.y===head.y)) {
+                playSound('lose');
+                clearInterval(currentSnakeInterval);
+                document.getElementById('snakeStatus').innerText = `💥 Game Over! Final Score: ${snakeScore}`;
+                recordGameResult(false);
+                return;
+            }
+
+            snake.unshift(head);
+            if(head.x === snakeFood.x && head.y === snakeFood.y) {
+                playSound('win');
+                snakeScore += 10;
+                document.getElementById('snakeStatus').innerText = `Score: ${snakeScore}`;
+                spawnSnakeFood();
+            } else {
+                snake.pop();
+            }
+
+            ctx.fillStyle = '#030508'; ctx.fillRect(0,0,280,280);
+            ctx.fillStyle = '#f43f5e'; ctx.fillRect(snakeFood.x*20+2, snakeFood.y*20+2, 16, 16);
+            ctx.fillStyle = '#10b981';
+            snake.forEach(s => ctx.fillRect(s.x*20+1, s.y*20+1, 18, 18));
+        }
+
+        /* STATS LOGIC */
+        function recordGameResult(win) {
+            try {
+                let played = parseInt(localStorage.getItem('hubPlayedCount') || '0');
+                let won = parseInt(localStorage.getItem('hubWonCount') || '0');
+                played++;
+                if (win) won++;
+                localStorage.setItem('hubPlayedCount', played.toString());
+                localStorage.setItem('hubWonCount', won.toString());
+                updateStatsUI();
+            } catch(e){}
+        }
+
+        function updateStatsUI() {
+            try {
+                let played = localStorage.getItem('hubPlayedCount') || '0';
+                let won = localStorage.getItem('hubWonCount') || '0';
+                const playedEl = document.getElementById('statPlayed');
+                const wonEl = document.getElementById('statWon');
+                if (playedEl) playedEl.innerText = played;
+                if (wonEl) wonEl.innerText = won;
+            } catch(e){}
+        }
+
+        function castVote(gameId, type) {
+            const likeEl = document.getElementById(`like-count-${gameId}`);
+            const dislikeEl = document.getElementById(`dislike-count-${gameId}`);
+            if (!likeEl || !dislikeEl) return;
+
+            let likes = parseInt(likeEl.innerText) || 0;
+            let dislikes = parseInt(dislikeEl.innerText) || 0;
+
+            if (type === 'like') likes++;
+            else dislikes++;
+
+            likeEl.innerText = likes;
+            dislikeEl.innerText = dislikes;
+
+            let total = likes + dislikes;
+            let pct = Math.round((likes / total) * 100);
+            const bar = document.getElementById(`bar-${gameId}`);
+            const percentEl = document.getElementById(`percent-${gameId}`);
+            if (bar) bar.style.width = `${pct}%`;
+            if (percentEl) percentEl.innerText = `${pct}% Liked`;
+            playSound('click');
+        }
+    </script>
+</body>
+</html>
