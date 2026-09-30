@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Game Hub - Professional Gaming Portal</title>
+    <title>Ultimate Game Hub - Cyber Achievement Edition</title>
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@600;700&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
         :root {
-            --bg-dark: #05070c;
-            --bg-surface: #0b0f19;
-            --bg-surface-elevated: #121826;
-            --card-bg: rgba(15, 22, 36, 0.85);
-            --card-border: rgba(255, 255, 255, 0.08);
+            --bg-dark: #030509;
+            --bg-surface: #0a0e17;
+            --bg-surface-elevated: #111726;
+            --card-bg: rgba(13, 19, 33, 0.88);
+            --card-border: rgba(0, 243, 255, 0.15);
             
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
@@ -32,7 +32,7 @@
             --glow-border: rgba(245, 158, 11, 0.75);
             --texture-badge: #f59e0b;
 
-            --modal-bg: #090d16;
+            --modal-bg: #080c14;
             --radius-sm: 8px;
             --radius-md: 14px;
             --radius-lg: 22px;
@@ -73,7 +73,7 @@
         .intro-screen {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #04060a;
+            background: #020305;
             z-index: 999999;
             display: flex;
             flex-direction: column;
@@ -123,6 +123,7 @@
         .intro-title {
             margin-top: 35px; font-size: 1.8rem; font-weight: 800; letter-spacing: 5px;
             color: #ffffff; text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
             background: linear-gradient(135deg, #ffffff, #a5b4fc, #6366f1);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             text-shadow: 0 0 25px rgba(99, 102, 241, 0.6); z-index: 2;
@@ -201,7 +202,7 @@
             background: linear-gradient(90deg, var(--accent-primary), var(--texture-badge));
         }
 
-        .entry-card h2 { font-size: 1.5rem; font-weight: 800; margin-top: 10px; }
+        .entry-card h2 { font-size: 1.5rem; font-weight: 800; margin-top: 10px; font-family: 'Orbitron', sans-serif; }
         .entry-card h2 span { color: var(--accent-primary); }
         .entry-card p { color: var(--text-secondary); font-size: 0.86rem; margin: 6px 0 20px 0; }
 
@@ -249,19 +250,20 @@
             width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
             color: white; border: none; border-radius: var(--radius-md); font-weight: 700; font-size: 0.95rem; cursor: pointer;
             transition: var(--transition-smooth); box-shadow: 0 8px 20px var(--accent-glow);
+            font-family: 'Orbitron', sans-serif; letter-spacing: 1px;
         }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 28px var(--accent-glow); }
 
         .navbar {
             display: flex; justify-content: space-between; align-items: center; padding: 18px 5%;
-            background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06); position: sticky; top: 0; z-index: 100;
+            background: rgba(10, 14, 23, 0.9); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.12); position: sticky; top: 0; z-index: 100;
             width: 100%;
         }
 
         .brand-logo {
-            display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px;
-            color: var(--text-primary); text-decoration: none;
+            display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.25rem; letter-spacing: 1px;
+            color: var(--text-primary); text-decoration: none; font-family: 'Orbitron', sans-serif;
         }
         .brand-logo i { color: var(--accent-primary); background: rgba(99, 102, 241, 0.15); padding: 9px; border-radius: 12px; font-size: 1.1rem; }
         .brand-logo span { color: var(--accent-primary); }
@@ -274,6 +276,13 @@
             font-size: 0.82rem; font-weight: 600;
         }
 
+        .level-badge-nav {
+            background: linear-gradient(135deg, #00f3ff, #0066ff);
+            color: #000; font-family: 'Orbitron', sans-serif; font-weight: 900;
+            padding: 4px 10px; border-radius: 20px; font-size: 0.75rem;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
         .icon-btn {
             background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-primary); width: 38px; height: 38px; border-radius: 12px;
@@ -281,15 +290,42 @@
         }
         .icon-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--glow-border); transform: translateY(-2px); }
 
-        .hero { text-align: center; padding: 50px 20px 25px 20px; max-width: 800px; margin: 0 auto; }
+        /* HERO & LEVEL BAR */
+        .hero { text-align: center; padding: 40px 20px 20px 20px; max-width: 800px; margin: 0 auto; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 6px; background: rgba(99, 102, 241, 0.12);
             border: 1px solid rgba(99, 102, 241, 0.3); color: #818cf8; font-size: 0.78rem; font-weight: 700;
             padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px;
         }
-        .hero h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 14px; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 14px; font-family: 'Orbitron', sans-serif; }
         .hero h1 span { background: linear-gradient(135deg, #a5b4fc, #6366f1, var(--texture-badge)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; font-weight: 400; }
+
+        /* LEVEL & XP DISPLAY CARD */
+        .xp-dashboard-card {
+            background: rgba(13, 19, 33, 0.85);
+            border: 1px solid rgba(0, 243, 255, 0.25);
+            border-radius: var(--radius-md);
+            padding: 18px 24px;
+            margin: 15px auto 25px auto;
+            max-width: 650px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(0, 243, 255, 0.05);
+        }
+
+        .xp-meta-row {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+            font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 800;
+        }
+
+        .xp-bar-bg {
+            width: 100%; height: 10px; background: rgba(255, 255, 255, 0.08); border-radius: 12px;
+            overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .xp-bar-fill {
+            height: 100%; background: linear-gradient(90deg, #00f3ff, #6366f1, #f59e0b);
+            border-radius: 12px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.8);
+        }
 
         .controls-bar {
             max-width: 1200px; margin: 20px auto 10px auto; padding: 0 4%;
@@ -312,8 +348,15 @@
         }
         .filter-chip:hover, .filter-chip.active { background: var(--accent-primary); color: white; border-color: var(--accent-primary); box-shadow: 0 4px 14px var(--accent-glow); }
 
-        /* GAMES SECTION & GRID UPDATES (Max 3 items per row & Bigger cards) */
-        .games-section { padding: 20px 4% 80px 4%; max-width: 1200px; margin: 0 auto; width: 100%; overflow: hidden; }
+        /* SECTOR HEADINGS */
+        .sector-title {
+            font-family: 'Orbitron', sans-serif; font-size: 1.25rem; font-weight: 800;
+            color: var(--text-primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;
+            letter-spacing: 1px; border-left: 4px solid var(--accent-primary); padding-left: 12px;
+        }
+
+        /* GAMES SECTION & GRID UPDATES */
+        .games-section { padding: 10px 4% 60px 4%; max-width: 1200px; margin: 0 auto; width: 100%; overflow: hidden; }
         .games-grid { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
@@ -330,7 +373,7 @@
             .games-grid { grid-template-columns: 1fr; }
         }
 
-        /* GAME CARD - 3D Dynamic Tilt and In-place Expand */
+        /* GAME CARD - ADVANCED 3D MULTI-LAYER POP-OUT TILT */
         .game-card {
             background: var(--card-bg); 
             border: 1px solid var(--card-border); 
@@ -341,59 +384,122 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             transition: transform 0.25s ease-out, border-color 0.4s ease, box-shadow 0.4s ease;
             cursor: pointer; 
-            overflow: hidden; 
+            overflow: visible; 
             display: flex; 
             flex-direction: column; 
             justify-content: space-between;
-            perspective: 1000px;
+            perspective: 1200px;
             transform-style: preserve-3d;
         }
-
-        .game-card::before, .game-card::after { display: none !important; }
 
         .game-card:hover {
             border-color: var(--glow-border);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px var(--glow-border);
-            z-index: 2;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 25px var(--glow-border);
+            z-index: 5;
         }
 
-        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-
-        /* 3D LOGO ICON BOX FIX */
-        .card-icon-box {
-            width: 58px; height: 58px; border-radius: 16px; background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem; color: var(--accent-primary); transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        /* CARD CONTENT INNER LAYER FOR 3D DEPTH */
+        .card-content-inner {
             transform-style: preserve-3d;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
 
-        /* Hovering over card causes the Logo to pop out in 3D */
+        .card-top { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            margin-bottom: 20px; 
+            transform-style: preserve-3d;
+        }
+
+        /* SEPARATE 3D FLOATING LOGO / ICON BOX */
+        .card-icon-box {
+            width: 60px; height: 60px; border-radius: 18px; 
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(0, 243, 255, 0.3); 
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.7rem; color: var(--accent-primary); 
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+            transform-style: preserve-3d;
+            transform: translateZ(30px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
         .game-card:hover .card-icon-box { 
-            background: rgba(255, 255, 255, 0.12); 
+            background: rgba(0, 243, 255, 0.2); 
             border-color: var(--glow-border); 
-            color: var(--texture-badge);
-            transform: translateZ(20px) rotateY(-12deg) rotateX(10deg) scale(1.1);
-            box-shadow: -5px 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px var(--glow-color-primary);
+            color: #00f3ff;
+            /* SEPARATE 3D POP-OUT & 360-LIKE TILT ROTATION */
+            transform: translateZ(55px) rotateY(-20deg) rotateX(15deg) scale(1.18);
+            box-shadow: -10px 18px 30px rgba(0, 0, 0, 0.7), 0 0 25px var(--glow-color-primary);
+        }
+
+        .card-title { 
+            font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;
+            transform: translateZ(20px); transition: transform 0.3s ease;
+        }
+        .card-desc { 
+            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 22px;
+            transform: translateZ(10px); transition: transform 0.3s ease;
+        }
+
+        /* SPECIAL UNTITLED REDDISH CYBER CARD (LOCKED / UPCOMING) */
+        .game-card.untitled-special-card {
+            background: linear-gradient(145deg, rgba(30, 8, 15, 0.95), rgba(12, 4, 8, 0.95));
+            border: 1.5px solid #ff2a5f;
+            box-shadow: 0 0 20px rgba(255, 42, 95, 0.35);
+            animation: pulseUntitled 3s infinite alternate;
+            cursor: not-allowed;
+            filter: grayscale(0.2);
+        }
+        .game-card.untitled-special-card:hover {
+            border-color: #ff003c;
+            box-shadow: 0 0 35px rgba(255, 0, 60, 0.7), 0 0 10px #ff003c;
+        }
+        .game-card.untitled-special-card .card-icon-box {
+            background: rgba(255, 42, 95, 0.15);
+            border-color: rgba(255, 42, 95, 0.4);
+            color: #ff3b6b;
+            text-shadow: 0 0 12px rgba(255, 59, 107, 0.8);
+        }
+        .game-card.untitled-special-card .card-badge-untitled {
+            background: rgba(255, 0, 60, 0.2);
+            border: 1px solid #ff003c;
+            color: #ff4d73;
+            font-size: 0.72rem; font-weight: 800; padding: 5px 12px; border-radius: 20px; letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.4);
+        }
+        .game-card.untitled-special-card .play-btn-action.locked-btn {
+            background: linear-gradient(135deg, #330813, #1f040b);
+            border: 1px solid #ff003c;
+            color: #ff4d73;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        @keyframes pulseUntitled {
+            0% { box-shadow: 0 0 15px rgba(255, 42, 95, 0.3); }
+            100% { box-shadow: 0 0 28px rgba(255, 42, 95, 0.55); }
         }
 
         .card-badge {
             background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4);
             color: #34d399; font-size: 0.72rem; font-weight: 800; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.5px;
+            transform: translateZ(15px);
         }
-
-        .card-title { font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
-        .card-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 22px; }
 
         .play-btn-action {
             width: 100%; padding: 13px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
             color: white; border: none; border-radius: var(--radius-md); font-weight: 700; font-size: 0.9rem; cursor: pointer;
             transition: var(--transition-smooth); box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
             display: flex; align-items: center; justify-content: center; gap: 8px;
+            font-family: 'Orbitron', sans-serif; letter-spacing: 0.5px;
+            transform: translateZ(15px);
         }
         .play-btn-action:hover { box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5); }
 
-        .rating-widget { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+        .rating-widget { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.06); transform: translateZ(10px); }
         .rating-btns { display: flex; gap: 8px; margin-bottom: 8px; }
         .vote-chip {
             flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 7px; border-radius: 10px;
@@ -407,26 +513,88 @@
         .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #ec4899, #ef4444); border-radius: 10px; transition: width 0.4s ease; }
         .rating-meta { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; font-weight: 600; }
 
-        /* MODAL & SETTINGS OVERFLOW FIX FOR MOBILE */
+        /* ACHIEVEMENT LIST STYLES IN MODAL */
+        .achievement-list-grid {
+            display: flex; flex-direction: column; gap: 12px; margin-top: 10px;
+        }
+
+        .achieve-card-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            display: flex; align-items: center; gap: 14px;
+            transition: var(--transition-smooth);
+        }
+
+        .achieve-card-item.unlocked {
+            border-color: rgba(0, 243, 255, 0.4);
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.08), rgba(99, 102, 241, 0.05));
+            box-shadow: 0 4px 15px rgba(0, 243, 255, 0.15);
+        }
+
+        .achieve-icon-box {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: #64748b; flex-shrink: 0;
+        }
+
+        .achieve-card-item.unlocked .achieve-icon-box {
+            background: rgba(0, 243, 255, 0.15); border-color: #00f3ff;
+            color: #00f3ff; box-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
+        }
+
+        .achieve-info { flex: 1; }
+        .achieve-title { font-size: 0.95rem; font-weight: 800; color: var(--text-primary); font-family: 'Orbitron', sans-serif; }
+        .achieve-desc { font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px; }
+        .achieve-reward { font-size: 0.75rem; color: var(--texture-badge); font-weight: 700; margin-top: 4px; }
+
+        /* REALTIME TOAST NOTIFICATION */
+        .toast-container {
+            position: fixed; bottom: 25px; right: 25px; z-index: 99999;
+            display: flex; flex-direction: column; gap: 10px; pointer-events: none;
+        }
+
+        .achievement-toast {
+            background: rgba(10, 14, 23, 0.95);
+            border: 1.5px solid #00f3ff;
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3), 0 0 15px #00f3ff;
+            border-radius: 14px; padding: 14px 20px;
+            display: flex; align-items: center; gap: 14px;
+            min-width: 300px; backdrop-filter: blur(12px);
+            animation: slideInToast 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            pointer-events: auto;
+        }
+
+        @keyframes slideInToast {
+            0% { transform: translateX(100%) scale(0.8); opacity: 0; }
+            100% { transform: translateX(0) scale(1); opacity: 1; }
+        }
+
+        /* CYBER MODALS & HIGH-TECH BARS */
         .modal-backdrop {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 7, 12, 0.88); backdrop-filter: blur(16px); z-index: 10000;
+            background: rgba(2, 4, 8, 0.92); backdrop-filter: blur(16px); z-index: 10000;
             display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
         .modal-backdrop.active { opacity: 1; pointer-events: auto; }
 
         .modal-box {
-            background: var(--modal-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-lg);
-            padding: 24px 20px; width: 92%; max-width: 480px; position: relative; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
-            max-height: 85vh; overflow-y: auto; overflow-x: hidden;
+            background: var(--modal-bg); 
+            border: 1px solid rgba(0, 243, 255, 0.3); 
+            border-radius: var(--radius-lg);
+            padding: 26px 22px; width: 92%; max-width: 520px; position: relative; 
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 243, 255, 0.2);
+            max-height: 88vh; overflow-y: auto; overflow-x: hidden;
         }
 
         .modal-close {
-            position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.05); border: none;
+            position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1);
             color: var(--text-muted); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: var(--transition-smooth); z-index: 5;
         }
-        .modal-close:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.12); }
+        .modal-close:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.15); border-color: var(--accent-primary); }
 
         .settings-nav { display: flex; gap: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px; margin-bottom: 20px; }
         .settings-tab-btn { background: none; border: none; color: var(--text-muted); font-weight: 700; font-size: 0.85rem; padding: 8px 14px; border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition-smooth); }
@@ -448,42 +616,147 @@
         .preset-desc { font-size: 0.72rem; color: var(--text-muted); }
 
         .game-input-row { display: flex; gap: 10px; margin-top: 12px; }
-        .game-input-row input { flex: 1; padding: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); color: white; outline: none; width: 100%; }
-        .game-input-row input:focus { border-color: var(--texture-badge); }
+        .game-input-row input { 
+            flex: 1; padding: 14px; background: rgba(0, 0, 0, 0.4); 
+            border: 1.5px solid rgba(99, 102, 241, 0.4); border-radius: var(--radius-md); 
+            color: #00f3ff; font-family: 'Fira Code', monospace; font-size: 1.1rem; font-weight: 700; outline: none; width: 100%; text-align: center;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        }
+        .game-input-row input:focus { border-color: #00f3ff; box-shadow: 0 0 15px rgba(0, 243, 255, 0.4); }
 
         .sub-btn-group { display: flex; gap: 8px; margin-top: 8px; }
         .sub-btn { flex: 1; padding: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-secondary); border-radius: var(--radius-sm); font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: var(--transition-smooth); }
         .sub-btn.active { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
 
-        .game-status-box { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); padding: 14px; border-radius: var(--radius-md); text-align: center; font-weight: 600; margin: 16px 0; font-size: 0.9rem; }
+        .game-status-box { 
+            background: rgba(0, 243, 255, 0.05); 
+            border: 1px solid rgba(0, 243, 255, 0.25); 
+            padding: 16px; border-radius: var(--radius-md); 
+            text-align: center; font-weight: 700; margin: 18px 0; font-size: 0.95rem; 
+            color: #e0f7fc;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
+            letter-spacing: 0.5px;
+        }
 
         .powerup-row { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
         .powerup-item { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-primary); padding: 8px 12px; border-radius: 10px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: var(--transition-smooth); }
         .powerup-item:hover:not(:disabled) { border-color: var(--texture-badge); transform: translateY(-2px); }
         .powerup-item:disabled { opacity: 0.3; cursor: not-allowed; }
 
-        /* GAME UI STYLES */
+        /* PRO ROCK PAPER SCISSORS (CYBER CARDS) STYLES */
+        .rps-cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .rps-card-option {
+            flex: 1;
+            background: linear-gradient(145deg, rgba(20, 30, 50, 0.8), rgba(10, 15, 25, 0.9));
+            border: 1.5px solid rgba(0, 243, 255, 0.25);
+            border-radius: 16px;
+            padding: 18px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rps-card-option:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: #00f3ff;
+            box-shadow: 0 12px 25px rgba(0, 243, 255, 0.4), 0 0 15px rgba(0, 243, 255, 0.2);
+            background: linear-gradient(145deg, rgba(30, 45, 75, 0.9), rgba(15, 22, 38, 0.95));
+        }
+
+        .rps-icon-wrapper {
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; color: #00f3ff;
+            transition: var(--transition-smooth);
+        }
+
+        .rps-card-option:hover .rps-icon-wrapper {
+            background: #00f3ff;
+            color: #000;
+            box-shadow: 0 0 15px #00f3ff;
+        }
+
+        .rps-card-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+
+        .rps-arena {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .rps-fighter {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .rps-fighter-icon {
+            font-size: 2.5rem;
+            margin-top: 8px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* TIC TAC TOE GRID */
         .ttt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 220px; margin: 15px auto; }
         .ttt-cell { width: 65px; height: 65px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-smooth); }
         .ttt-cell:hover { background: rgba(255,255,255,0.1); border-color: var(--texture-badge); }
         .ttt-cell.x { color: #6366f1; }
         .ttt-cell.o { color: #f43f5e; }
 
-        .rps-options { display: flex; justify-content: center; gap: 14px; margin: 15px 0; }
-        .rps-btn { font-size: 2rem; padding: 12px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: var(--transition-smooth); width: 75px; height: 75px; display: flex; align-items: center; justify-content: center; }
-        .rps-btn:hover { transform: scale(1.08); border-color: var(--texture-badge); background: rgba(255,255,255,0.1); }
-
         .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 260px; margin: 15px auto; }
         .memory-card { width: 55px; height: 55px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.3s ease; transform-style: preserve-3d; }
         .memory-card.flipped { background: rgba(99,102,241,0.2); border-color: #6366f1; }
 
-        #snakeCanvas { background: #030508; border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; display: block; margin: 10px auto; max-width: 100%; touch-action: none; }
+        /* HIGH-DEF BIG NEON SNAKE CANVAS STYLES */
+        #snakeCanvas { 
+            background: #030508; 
+            border: 2px solid rgba(0, 243, 255, 0.4); 
+            border-radius: 16px; 
+            display: block; 
+            margin: 15px auto; 
+            width: 100%; 
+            max-width: 400px; 
+            height: auto; 
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 0, 0, 0.8);
+            touch-action: none; 
+            cursor: pointer;
+        }
 
         footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid rgba(255, 255, 255, 0.04); }
         footer span { color: var(--accent-primary); font-weight: 700; }
     </style>
 </head>
 <body>
+
+    <!-- REALTIME NOTIFICATION TOAST CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
 
     <!-- FIRST INTRO SCREEN -->
     <div class="intro-screen" id="introScreen">
@@ -556,23 +829,38 @@
 
         <div class="nav-actions">
             <div class="user-pill" id="navUserDisplay">🤖 Guest</div>
+            <div class="level-badge-nav" id="navLevelBadge">LVL 1</div>
             <button class="icon-btn" id="deviceToggleBtn" onclick="toggleDeviceView()" title="Switch PC/Mobile Mode" aria-label="Switch Device View">
                 <i class="fa-solid fa-desktop" id="deviceIcon"></i>
             </button>
             <button class="icon-btn" id="soundToggleBtn" onclick="toggleSound()" title="Sound FX" aria-label="Toggle Sound">
                 <i class="fa-solid fa-volume-high"></i>
             </button>
-            <button class="icon-btn" onclick="openSettingsModal()" title="Settings & Texture Library" aria-label="Settings">
-                <i class="fa-solid fa-sliders"></i>
+            <button class="icon-btn" onclick="openSettingsModal()" title="Settings & Achievements" aria-label="Settings">
+                <i class="fa-solid fa-trophy"></i>
             </button>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO & LEVEL SYSTEM DASHBOARD -->
     <section class="hero">
-        <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> High-Performance Browser Gaming</div>
+        <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> High-Performance Cyber Gaming</div>
         <h1>Next-Gen Arcade <span>Experience</span></h1>
-        <p>Ultra-smooth mini-games, dynamic card effects, and fully customizable backlight textures.</p>
+        
+        <!-- LEVEL & XP PROGRESS DASHBOARD CARD -->
+        <div class="xp-dashboard-card">
+            <div class="xp-meta-row">
+                <span style="color: #00f3ff;" id="dashboardLevelText">LEVEL 1 APPRENTICE</span>
+                <span style="color: var(--texture-badge);" id="dashboardXpText">0 / 100 XP</span>
+            </div>
+            <div class="xp-bar-bg">
+                <div class="xp-bar-fill" id="xpBarFill" style="width: 0%;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">
+                <span>MAX LEVEL: 100</span>
+                <span>WIN MATCHES TO GAIN XP & UNLOCK BADGES</span>
+            </div>
+        </div>
     </section>
 
     <!-- SEARCH & FILTER CONTROLS -->
@@ -587,22 +875,24 @@
             <button class="filter-chip" onclick="setCategoryFilter('playable', this)">Playable Now</button>
             <button class="filter-chip" onclick="setCategoryFilter('arcade', this)">Arcade</button>
             <button class="filter-chip" onclick="setCategoryFilter('strategy', this)">Strategy</button>
+            <button class="filter-chip" onclick="setCategoryFilter('upcoming', this)">Upcoming</button>
         </div>
     </div>
 
-    <!-- GAMES SECTION GRID (Updated with 3 max per row & enlarged card size) -->
+    <!-- MAIN PLAYABLE GAMES SECTOR -->
     <section class="games-section">
+        <div class="sector-title"><i class="fa-solid fa-gamepad"></i> Playable Sector</div>
         <div class="games-grid" id="gamesGrid">
             
             <!-- 1. GUESS THE NUMBER -->
             <div class="game-card" data-category="playable puzzle" data-title="guess the number" onclick="openGameModal('guess-number')">
-                <div>
+                <div class="card-content-inner">
                     <div class="card-top">
                         <div class="card-icon-box"><i class="fa-solid fa-hashtag"></i></div>
                         <span class="card-badge">PLAYABLE</span>
                     </div>
-                    <h3 class="card-title">Guess The Number</h3>
-                    <p class="card-desc">Hot/Cold indicators, custom range, tries limit, power-up lifelines & AI player modes.</p>
+                    <h3 class="card-title">Number Cracker Pro</h3>
+                    <p class="card-desc">High-tech code-breaking simulator with custom ranges, AI strategy modes, and neon lifelines.</p>
                 </div>
 
                 <div>
@@ -625,7 +915,7 @@
 
             <!-- 2. TIC TAC TOE -->
             <div class="game-card" data-category="playable strategy" data-title="tic tac toe" onclick="openGameModal('tictactoe')">
-                <div>
+                <div class="card-content-inner">
                     <div class="card-top">
                         <div class="card-icon-box"><i class="fa-solid fa-xmark"></i></div>
                         <span class="card-badge">PLAYABLE</span>
@@ -650,13 +940,13 @@
 
             <!-- 3. ROCK PAPER SCISSORS -->
             <div class="game-card" data-category="playable arcade" data-title="rock paper scissors" onclick="openGameModal('rps')">
-                <div>
+                <div class="card-content-inner">
                     <div class="card-top">
                         <div class="card-icon-box"><i class="fa-solid fa-hand-back-fist"></i></div>
                         <span class="card-badge">PLAYABLE</span>
                     </div>
                     <h3 class="card-title">Cyber Showdown</h3>
-                    <p class="card-desc">Fast-paced Rock Paper Scissors with streak combo score multiplier & slick animations.</p>
+                    <p class="card-desc">Advanced 3D Card Selection RPS with AI fight arena and streak multiplier.</p>
                 </div>
 
                 <div>
@@ -675,7 +965,7 @@
 
             <!-- 4. MEMORY CARD MATCH -->
             <div class="game-card" data-category="playable puzzle" data-title="memory card match" onclick="openGameModal('memory')">
-                <div>
+                <div class="card-content-inner">
                     <div class="card-top">
                         <div class="card-icon-box"><i class="fa-solid fa-brain"></i></div>
                         <span class="card-badge">PLAYABLE</span>
@@ -700,13 +990,13 @@
 
             <!-- 5. RETRO SNAKE -->
             <div class="game-card" data-category="playable arcade" data-title="classic snake" onclick="openGameModal('snake')">
-                <div>
+                <div class="card-content-inner">
                     <div class="card-top">
                         <div class="card-icon-box"><i class="fa-solid fa-staff-snake"></i></div>
                         <span class="card-badge">PLAYABLE</span>
                     </div>
                     <h3 class="card-title">Neon Snake</h3>
-                    <p class="card-desc">Guide the neon serpent, gather energy pills, and survive in an expanding arena.</p>
+                    <p class="card-desc">Expanded HD Board. Smooth Keyboard Keys (Arrow/WASD) or Mobile Touch Direction controls!</p>
                 </div>
 
                 <div>
@@ -726,18 +1016,59 @@
         </div>
     </section>
 
-    <!-- SETTINGS MODAL (With Mobile Overflow Fixes) -->
+    <!-- NEW UPCOMING / LOCKED GAMES SECTOR -->
+    <section class="games-section" style="padding-top: 0;">
+        <div class="sector-title" style="border-color: #ff003c; color: #ff3b6b;">
+            <i class="fa-solid fa-lock"></i> Upcoming Projects & Locked Sector
+        </div>
+        
+        <div class="games-grid">
+            <!-- UNTITLED GAME CARD -->
+            <div class="game-card untitled-special-card" data-category="upcoming arcade strategy" data-title="untitled" onclick="handleLockedGameClick()">
+                <div class="card-content-inner">
+                    <div class="card-top">
+                        <div class="card-icon-box"><i class="fa-solid fa-radiation"></i></div>
+                        <span class="card-badge-untitled">🔒 LOCKED / COMING SOON</span>
+                    </div>
+                    <h3 class="card-title" style="color: #ff3b6b; font-family: 'Orbitron', sans-serif; letter-spacing: 1px;">UNTITLED</h3>
+                    <p class="card-desc" style="color: #fda4af;">Encrypted cybernetic project module. Neural protocol under development. Release scheduled soon!</p>
+                </div>
+
+                <div>
+                    <button class="play-btn-action locked-btn" disabled><i class="fa-solid fa-lock"></i> Locked - Release Soon</button>
+                    
+                    <div class="rating-widget" onclick="event.stopPropagation()">
+                        <div class="rating-btns">
+                            <button class="vote-chip like-chip" onclick="castVote('untitled', 'like')"><i class="fa-solid fa-heart"></i> <span id="like-count-untitled">320</span></button>
+                            <button class="vote-chip dislike-chip" onclick="castVote('untitled', 'dislike')"><i class="fa-solid fa-thumbs-down"></i> <span id="dislike-count-untitled">2</span></button>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-untitled" style="width: 99%;"></div></div>
+                        <div class="rating-meta"><span>Approval</span><span id="percent-untitled">99% Liked</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SETTINGS & ACHIEVEMENTS MODAL -->
     <div class="modal-backdrop" id="settingsModal" onclick="closeOnOutsideSettings(event)">
         <div class="modal-box">
             <button class="modal-close" onclick="closeSettingsModal()" aria-label="Close Settings">✖</button>
-            <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 12px;"><i class="fa-solid fa-sliders"></i> Portal Settings</h2>
+            <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 12px; font-family: 'Orbitron', sans-serif;"><i class="fa-solid fa-sliders"></i> Cyber Dashboard</h2>
             
             <div class="settings-nav">
-                <button class="settings-tab-btn active" onclick="switchSettingsTab('textureTab', this)">Texture Library</button>
+                <button class="settings-tab-btn active" onclick="switchSettingsTab('achieveTab', this)">Achievements 🏆</button>
+                <button class="settings-tab-btn" onclick="switchSettingsTab('textureTab', this)">Texture Library</button>
                 <button class="settings-tab-btn" onclick="switchSettingsTab('profileTab', this)">Player Profile</button>
             </div>
 
-            <div id="textureTab" class="settings-content">
+            <!-- ACHIEVEMENTS TAB -->
+            <div id="achieveTab" class="settings-content">
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 12px;">Complete challenges to earn XP and level up to Level 100!</p>
+                <div class="achievement-list-grid" id="achievementListContainer"></div>
+            </div>
+
+            <div id="textureTab" class="settings-content" style="display: none;">
                 <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 14px;">Select an accent glow color preset:</p>
 
                 <div class="texture-preset-grid">
@@ -814,7 +1145,7 @@
     </div>
 
     <footer>
-        <p>© 2026 <span>Ultimate Game Hub</span>. Designed with Premium Aesthetics.</p>
+        <p>© 2026 <span>Ultimate Game Hub</span>. Designed with Cyber Achievement System.</p>
     </footer>
 
     <!-- SCRIPT LOGIC -->
@@ -826,6 +1157,149 @@
 
         let soundEnabled = true;
         let audioCtx = null;
+
+        /* LOCKED GAME INTERACTION */
+        function handleLockedGameClick() {
+            playSound('lose');
+            showToast('PROJECT ENCRYPTED', 'Untitled is locked! Coming in the next system update.', 'fa-lock');
+        }
+
+        /* ACHIEVEMENT & LEVELING DATA SYSTEM */
+        const ACHIEVEMENTS_DATA = [
+            { id: 'first_win', title: 'FIRST BLOOD', desc: 'Win your first game in the hub', rewardXp: 50, icon: 'fa-trophy' },
+            { id: 'guess_master', title: 'CODE CRACKER', desc: 'Decrypt number in Guess The Number', rewardXp: 75, icon: 'fa-hashtag' },
+            { id: 'ttt_master', title: 'MINIMAX OVERLORD', desc: 'Win a match in Tic Tac Toe', rewardXp: 80, icon: 'fa-xmark' },
+            { id: 'rps_streak', title: 'STREAK MASTER', desc: 'Reach 3 win streak in Cyber Showdown', rewardXp: 100, icon: 'fa-fire' },
+            { id: 'memory_pro', title: 'NEURAL PRODIGY', desc: 'Complete Memory Matrix puzzle', rewardXp: 90, icon: 'fa-brain' },
+            { id: 'snake_pro', title: 'CYBER SERPENT', desc: 'Score 50+ points in Neon Snake', rewardXp: 120, icon: 'fa-staff-snake' },
+            { id: 'level_10', title: 'VETERAN GAMER', desc: 'Reach Player Level 10', rewardXp: 200, icon: 'fa-shield-halved' },
+            { id: 'level_100', title: 'CYBER LEGEND', desc: 'Reach the ultimate Player Level 100', rewardXp: 1000, icon: 'fa-crown' }
+        ];
+
+        let playerStats = {
+            level: 1,
+            xp: 0,
+            xpNeeded: 100,
+            unlockedAchievements: []
+        };
+
+        function loadPlayerXpStats() {
+            try {
+                const saved = localStorage.getItem('hubPlayerXpSystem');
+                if (saved) {
+                    playerStats = JSON.parse(saved);
+                }
+            } catch(e){}
+            updateXpUI();
+            renderAchievementsList();
+        }
+
+        function savePlayerXpStats() {
+            try {
+                localStorage.setItem('hubPlayerXpSystem', JSON.stringify(playerStats));
+            } catch(e){}
+        }
+
+        function addXp(amount) {
+            playerStats.xp += amount;
+            let leveledUp = false;
+
+            while (playerStats.xp >= playerStats.xpNeeded && playerStats.level < 100) {
+                playerStats.xp -= playerStats.xpNeeded;
+                playerStats.level++;
+                playerStats.xpNeeded = Math.floor(playerStats.xpNeeded * 1.25);
+                leveledUp = true;
+            }
+
+            if (playerStats.level >= 100) {
+                playerStats.level = 100;
+                playerStats.xp = playerStats.xpNeeded;
+                unlockAchievement('level_100');
+            }
+
+            if (playerStats.level >= 10) {
+                unlockAchievement('level_10');
+            }
+
+            savePlayerXpStats();
+            updateXpUI();
+
+            if (leveledUp) {
+                playSound('win');
+                if(typeof confetti === 'function') confetti({ particleCount: 150, spread: 90 });
+                showToast(`LEVEL UP!`, `You reached Player Level ${playerStats.level}! 🚀`, 'fa-bolt');
+            }
+        }
+
+        function unlockAchievement(id) {
+            if (playerStats.unlockedAchievements.includes(id)) return;
+            const ach = ACHIEVEMENTS_DATA.find(a => a.id === id);
+            if (!ach) return;
+
+            playerStats.unlockedAchievements.push(id);
+            savePlayerXpStats();
+            renderAchievementsList();
+
+            playSound('win');
+            if(typeof confetti === 'function') confetti({ particleCount: 100, spread: 70 });
+            showToast(`ACHIEVEMENT UNLOCKED!`, `${ach.title} (+${ach.rewardXp} XP)`, ach.icon);
+
+            addXp(ach.rewardXp);
+        }
+
+        function updateXpUI() {
+            const pct = Math.min(100, Math.floor((playerStats.xp / playerStats.xpNeeded) * 100));
+            document.getElementById('xpBarFill').style.width = `${pct}%`;
+            document.getElementById('navLevelBadge').innerText = `LVL ${playerStats.level}`;
+            document.getElementById('dashboardLevelText').innerText = `LEVEL ${playerStats.level} CYBER OPERATIVE`;
+            document.getElementById('dashboardXpText').innerText = `${playerStats.xp} / ${playerStats.xpNeeded} XP`;
+        }
+
+        function renderAchievementsList() {
+            const container = document.getElementById('achievementListContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            ACHIEVEMENTS_DATA.forEach(ach => {
+                const isUnlocked = playerStats.unlockedAchievements.includes(ach.id);
+                const card = document.createElement('div');
+                card.className = `achieve-card-item ${isUnlocked ? 'unlocked' : ''}`;
+                card.innerHTML = `
+                    <div class="achieve-icon-box"><i class="fa-solid ${ach.icon}"></i></div>
+                    <div class="achieve-info">
+                        <div class="achieve-title">${ach.title}</div>
+                        <div class="achieve-desc">${ach.desc}</div>
+                        <div class="achieve-reward">+${ach.rewardXp} XP Reward</div>
+                    </div>
+                    <div>
+                        <span style="font-family:'Orbitron',sans-serif; font-size:0.75rem; font-weight:800; color:${isUnlocked ? '#00f3ff' : '#64748b'};">
+                            ${isUnlocked ? 'UNLOCKED' : 'LOCKED'}
+                        </span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function showToast(title, subtitle, iconClass) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'achievement-toast';
+            toast.innerHTML = `
+                <div style="font-size: 1.8rem; color: #00f3ff;"><i class="fa-solid ${iconClass}"></i></div>
+                <div>
+                    <div style="font-family:'Orbitron',sans-serif; font-weight:800; font-size:0.88rem; color:#ffffff;">${title}</div>
+                    <div style="font-size:0.78rem; color:#94a3b8; margin-top:2px;">${subtitle}</div>
+                </div>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                toast.style.transition = 'all 0.4s ease';
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
+        }
 
         function initAudio() {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -955,9 +1429,10 @@
             checkSavedUser();
             updateStatsUI();
             init3DTilt();
+            loadPlayerXpStats();
         });
 
-        /* 3D TILT EFFECT FOR GAME CARDS */
+        /* ADVANCED 3D TILT EFFECT WITH SEPARATE LOGO LAYER */
         function init3DTilt() {
             document.querySelectorAll('.game-card').forEach(card => {
                 card.addEventListener('mousemove', (e) => {
@@ -966,14 +1441,14 @@
                     const y = e.clientY - rect.top;
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    const rotateX = ((y - centerY) / centerY) * -10;
-                    const rotateY = ((x - centerX) / centerX) * 10;
+                    const rotateX = ((y - centerY) / centerY) * -12;
+                    const rotateY = ((x - centerX) / centerX) * 12;
 
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
                 });
 
                 card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
                 });
             });
         }
@@ -1109,8 +1584,8 @@
 
             if (gameId === 'guess-number') {
                 container.innerHTML = `
-                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Guess The Number</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 16px;">Set your parameters and start playing!</p>
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.4rem; font-family: 'Orbitron', sans-serif; color: #00f3ff;">NUMBER CRACKER PRO</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 16px;">Calibrate range and attempt code decryption!</p>
 
                     <div id="setupSection">
                         <div style="margin-bottom: 12px;">
@@ -1144,13 +1619,13 @@
                             </div>
                         </div>
 
-                        <button class="play-btn-action" onclick="startGamePlay()">Launch Game 🚀</button>
+                        <button class="play-btn-action" onclick="startGamePlay()"><i class="fa-solid fa-play"></i> Initialize System 🚀</button>
                     </div>
 
                     <div id="playerControls" style="display: none;">
                         <div class="game-input-row">
-                            <input type="number" id="userGuessInput" placeholder="Enter guess..." onkeydown="if(event.key==='Enter') submitPlayerGuess()">
-                            <button class="play-btn-action" style="width: auto; padding: 0 20px;" onclick="submitPlayerGuess()">Submit</button>
+                            <input type="number" id="userGuessInput" placeholder="Enter code..." onkeydown="if(event.key==='Enter') submitPlayerGuess()">
+                            <button class="play-btn-action" style="width: auto; padding: 0 24px;" onclick="submitPlayerGuess()">TEST</button>
                         </div>
 
                         <div class="powerup-row">
@@ -1165,15 +1640,15 @@
                         <button class="sub-btn" style="background: #3b82f6; color: white;" onclick="handleAIFeedback('bigger')">Higher 📈</button>
                     </div>
 
-                    <div class="game-status-box" id="gameMessage">Choose settings and press Launch Game!</div>
+                    <div class="game-status-box" id="gameMessage">Choose parameters & initialize system</div>
                     <button class="btn-submit" id="restartBtn" style="display: none; background: #10b981;" onclick="resetToSetup()">Play Again 🔄</button>
                 `;
                 resetToSetup();
             } 
             else if (gameId === 'tictactoe') {
                 container.innerHTML = `
-                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Tic Tac Toe Pro</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Choose mode & outsmart your opponent!</p>
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem; font-family: 'Orbitron', sans-serif;">TIC TAC TOE PRO</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Minimax Algorithm Strategy Battle</p>
                     <div class="sub-btn-group" style="margin-bottom:12px;">
                         <button class="sub-btn active" id="tttVsAi" onclick="initTTT('ai')">vs AI 🤖</button>
                         <button class="sub-btn" id="tttVsP2" onclick="initTTT('pvp')">2 Players 👥</button>
@@ -1186,21 +1661,48 @@
             }
             else if (gameId === 'rps') {
                 container.innerHTML = `
-                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Cyber Showdown</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Rock, Paper, Scissors - Build your win streak!</p>
-                    <div style="text-align:center; font-weight:800; color:var(--texture-badge); margin-bottom:10px;">Streak: <span id="rpsStreak">0</span> 🔥</div>
-                    <div class="rps-options">
-                        <button class="rps-btn" onclick="playRPS('🪨')">🪨</button>
-                        <button class="rps-btn" onclick="playRPS('📄')">📄</button>
-                        <button class="rps-btn" onclick="playRPS('✂️')">✂️</button>
+                    <h2 style="font-weight: 900; text-align: center; font-size: 1.4rem; font-family: 'Orbitron', sans-serif; color: #00f3ff;">CYBER SHOWDOWN</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 8px;">3D Cyber Deck Combat</p>
+                    
+                    <div style="text-align:center; font-family:'Orbitron', sans-serif; font-weight:800; color:var(--texture-badge); margin-bottom:12px; font-size: 0.9rem;">
+                        STREAK MULTIPLIER: <span id="rpsStreak" style="color:#00f3ff; font-size:1.1rem;">0</span> 🔥
                     </div>
-                    <div class="game-status-box" id="rpsStatus">Choose your weapon to start!</div>
+
+                    <div class="rps-arena">
+                        <div class="rps-fighter">
+                            <span style="font-size:0.75rem; color:var(--text-muted);">YOU</span>
+                            <div class="rps-fighter-icon" id="playerFighterIcon">❓</div>
+                        </div>
+                        <div style="font-family:'Orbitron', sans-serif; font-weight:900; color: #ff003c; font-size: 1.2rem;">VS</div>
+                        <div class="rps-fighter">
+                            <span style="font-size:0.75rem; color:var(--text-muted);">AI SYSTEM</span>
+                            <div class="rps-fighter-icon" id="aiFighterIcon">❓</div>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; margin-bottom: 8px;">Select Battle Card:</p>
+                    <div class="rps-cards-container">
+                        <div class="rps-card-option" onclick="playRPS('ROCK')">
+                            <div class="rps-icon-wrapper"><i class="fa-solid fa-hand-back-fist"></i></div>
+                            <span class="rps-card-label">ROCK</span>
+                        </div>
+                        <div class="rps-card-option" onclick="playRPS('PAPER')">
+                            <div class="rps-icon-wrapper"><i class="fa-solid fa-hand"></i></div>
+                            <span class="rps-card-label">PAPER</span>
+                        </div>
+                        <div class="rps-card-option" onclick="playRPS('SCISSORS')">
+                            <div class="rps-icon-wrapper"><i class="fa-solid fa-hand-scissors"></i></div>
+                            <span class="rps-card-label">SCISSORS</span>
+                        </div>
+                    </div>
+
+                    <div class="game-status-box" id="rpsStatus">Select your weapon card to launch attack!</div>
                 `;
                 rpsStreak = 0;
             }
             else if (gameId === 'memory') {
                 container.innerHTML = `
-                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Memory Matrix</h2>
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem; font-family: 'Orbitron', sans-serif;">MEMORY MATRIX</h2>
                     <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Match all card pairs in minimum attempts!</p>
                     <div class="memory-grid" id="memoryGrid"></div>
                     <div class="game-status-box" id="memoryStatus">Flips: 0 | Pairs Left: 6</div>
@@ -1210,17 +1712,11 @@
             }
             else if (gameId === 'snake') {
                 container.innerHTML = `
-                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem;">Neon Snake</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 8px;">Use Arrow keys, swipe on canvas, or buttons!</p>
-                    <canvas id="snakeCanvas" width="280" height="280"></canvas>
-                    <div class="sub-btn-group" style="margin-top:8px;">
-                        <button class="sub-btn" onclick="changeSnakeDir('UP')">⬆️</button>
-                    </div>
-                    <div class="sub-btn-group">
-                        <button class="sub-btn" onclick="changeSnakeDir('LEFT')">⬅️</button>
-                        <button class="sub-btn" onclick="changeSnakeDir('DOWN')">⬇️</button>
-                        <button class="sub-btn" onclick="changeSnakeDir('RIGHT')">➡️</button>
-                    </div>
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem; font-family: 'Orbitron', sans-serif;">NEON SNAKE HD</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem; text-align: center; margin-bottom: 8px;">
+                        💻 Laptop: Arrow Keys or WASD | 📱 Mobile: Tap sides or Swipe on Board
+                    </p>
+                    <canvas id="snakeCanvas" width="400" height="400"></canvas>
                     <div class="game-status-box" id="snakeStatus">Score: 0</div>
                     <button class="btn-submit" style="background:#10b981;" onclick="initSnake()">Start / Restart Game 🐍</button>
                 `;
@@ -1262,7 +1758,7 @@
             document.getElementById('restartBtn').style.display = 'none';
             document.getElementById('btnEvenOdd').disabled = false;
             document.getElementById('btnShrink').disabled = false;
-            document.getElementById('gameMessage').innerText = 'Choose settings and press Launch Game!';
+            document.getElementById('gameMessage').innerText = 'Choose parameters & initialize system';
         }
 
         function startGamePlay() {
@@ -1299,17 +1795,19 @@
             if(guess === secretNumber) {
                 playSound('win');
                 if(typeof confetti === 'function') confetti({ particleCount: 100, spread: 70 });
-                document.getElementById('gameMessage').innerText = `🎉 Correct in ${attemptsUsed} tries!`;
-                recordGameResult(true); endGame();
+                document.getElementById('gameMessage').innerText = `🎉 Correct in ${attemptsUsed} tries! Code Decrypted!`;
+                recordGameResult(true); 
+                unlockAchievement('guess_master');
+                endGame();
             } else {
                 if(maxTriesLimit > 0 && attemptsUsed >= maxTriesLimit) {
                     playSound('lose');
-                    document.getElementById('gameMessage').innerText = `💥 Game Over! Number was ${secretNumber}.`;
+                    document.getElementById('gameMessage').innerText = `💥 Game Over! Secret code was ${secretNumber}.`;
                     recordGameResult(false); endGame(); return;
                 }
                 playSound('lose');
                 let diff = Math.abs(guess - secretNumber);
-                let text = diff <= 4 ? "🔥 Super Hot!" : (diff <= 12 ? "♨️ Warm!" : "❄️ Freezing!");
+                let text = diff <= 4 ? "🔥 Super Hot!" : (diff <= 12 ? "Warm!" : "Freezing!");
                 let dir = guess < secretNumber ? "📈 Higher" : "📉 Lower";
                 document.getElementById('gameMessage').innerText = `${text} Go ${dir}`;
             }
@@ -1381,7 +1879,10 @@
             if (checkTTTWinner(tttBoard, tttTurn)) {
                 playSound('win');
                 document.getElementById('tttStatus').innerText = `🎉 Player ${tttTurn} Wins!`;
-                if (tttTurn === 'X') recordGameResult(true);
+                if (tttTurn === 'X') {
+                    recordGameResult(true);
+                    unlockAchievement('ttt_master');
+                }
                 tttActive = false; return;
             }
             if (!tttBoard.includes('')) {
@@ -1413,29 +1914,43 @@
             return wins.some(w => w.every(idx => board[idx] === player));
         }
 
-        /* ROCK PAPER SCISSORS LOGIC */
+        /* PRO ROCK PAPER SCISSORS LOGIC */
         let rpsStreak = 0;
         function playRPS(playerChoice) {
             playSound('click');
-            const choices = ['🪨', '📄', '✂️'];
+            const choices = ['ROCK', 'PAPER', 'SCISSORS'];
+            const icons = { 'ROCK': '🪨', 'PAPER': '📄', 'SCISSORS': '✂️' };
             const aiChoice = choices[Math.floor(Math.random() * choices.length)];
+            
+            const pIcon = document.getElementById('playerFighterIcon');
+            const aIcon = document.getElementById('aiFighterIcon');
             const status = document.getElementById('rpsStatus');
 
+            pIcon.innerText = icons[playerChoice];
+            aIcon.innerText = icons[aiChoice];
+
             if (playerChoice === aiChoice) {
-                status.innerText = `Tie! Both chose ${playerChoice}`;
+                status.innerText = `Draw Match! Both deployed ${playerChoice}`;
+                status.style.color = '#e0f7fc';
             } else if (
-                (playerChoice==='🪨' && aiChoice==='✂️') ||
-                (playerChoice==='📄' && aiChoice==='🪨') ||
-                (playerChoice==='✂️' && aiChoice==='📄')
+                (playerChoice==='ROCK' && aiChoice==='SCISSORS') ||
+                (playerChoice==='PAPER' && aiChoice==='ROCK') ||
+                (playerChoice==='SCISSORS' && aiChoice==='PAPER')
             ) {
                 playSound('win');
                 rpsStreak++;
-                status.innerText = `You Won! ${playerChoice} beats ${aiChoice}`;
+                status.innerText = `VICTORY! ${playerChoice} overwhelmed System ${aiChoice}`;
+                status.style.color = '#00f3ff';
                 recordGameResult(true);
+
+                if (rpsStreak >= 3) {
+                    unlockAchievement('rps_streak');
+                }
             } else {
                 playSound('lose');
                 rpsStreak = 0;
-                status.innerText = `AI Won! ${aiChoice} beats ${playerChoice}`;
+                status.innerText = `DEFEAT! System ${aiChoice} countered your ${playerChoice}`;
+                status.style.color = '#ff3b6b';
                 recordGameResult(false);
             }
             document.getElementById('rpsStreak').innerText = rpsStreak;
@@ -1482,6 +1997,7 @@
                         if(typeof confetti === 'function') confetti({ particleCount: 100, spread: 70 });
                         document.getElementById('memoryStatus').innerText = `🎉 Mastered in ${memoryFlips} flips!`;
                         recordGameResult(true);
+                        unlockAchievement('memory_pro');
                     }
                 } else {
                     setTimeout(() => {
@@ -1499,29 +2015,42 @@
             document.getElementById('memoryStatus').innerText = `Flips: ${memoryFlips} | Pairs Left: ${6 - memoryPairsFound}`;
         }
 
-        /* NEON SNAKE LOGIC */
-        let snake = [], snakeDir = 'RIGHT', snakeScore = 0;
+        /* NEON SNAKE EXPANDED HD LOGIC */
+        let snake = [], snakeDir = 'RIGHT', snakeScore = 0, snakeFood = {x: 10, y: 10};
         let touchStartX = 0, touchStartY = 0;
+        const GRID_COUNT = 20;
 
         function initSnake() {
             const canvas = document.getElementById('snakeCanvas');
             if(!canvas) return;
             const ctx = canvas.getContext('2d');
-            snake = [{x: 5, y: 5}, {x: 4, y: 5}, {x: 3, y: 5}];
-            snakeDir = 'RIGHT'; snakeScore = 0;
+            
+            snake = [
+                {x: 6, y: 10}, 
+                {x: 5, y: 10}, 
+                {x: 4, y: 10}
+            ];
+            snakeDir = 'RIGHT'; 
+            snakeScore = 0;
             spawnSnakeFood();
             
             if (currentSnakeInterval) clearInterval(currentSnakeInterval);
-            currentSnakeInterval = setInterval(() => updateSnake(ctx), 120);
+            currentSnakeInterval = setInterval(() => updateSnake(ctx), 110);
 
+            // Keyboard Controls
             window.onkeydown = (e) => {
-                if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) {
+                const key = e.key;
+                if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d','W','A','S','D'].includes(key)) {
                     e.preventDefault();
                 }
-                changeSnakeDir(e.key.replace('Arrow', '').toUpperCase());
+
+                if ((key === 'ArrowUp' || key === 'w' || key === 'W') && snakeDir !== 'DOWN') snakeDir = 'UP';
+                if ((key === 'ArrowDown' || key === 's' || key === 'S') && snakeDir !== 'UP') snakeDir = 'DOWN';
+                if ((key === 'ArrowLeft' || key === 'a' || key === 'A') && snakeDir !== 'RIGHT') snakeDir = 'LEFT';
+                if ((key === 'ArrowRight' || key === 'd' || key === 'D') && snakeDir !== 'LEFT') snakeDir = 'RIGHT';
             };
 
-            // Touch support for Mobile
+            // Touch & Tap Controls
             canvas.ontouchstart = (e) => {
                 touchStartX = e.touches[0].clientX;
                 touchStartY = e.touches[0].clientY;
@@ -1531,25 +2060,41 @@
                 const diffX = e.changedTouches[0].clientX - touchStartX;
                 const diffY = e.changedTouches[0].clientY - touchStartY;
 
-                if (Math.abs(diffX) > Math.abs(diffY)) {
-                    if (diffX > 20) changeSnakeDir('RIGHT');
-                    else if (diffX < -20) changeSnakeDir('LEFT');
+                if (Math.abs(diffX) > 25 || Math.abs(diffY) > 25) {
+                    if (Math.abs(diffX) > Math.abs(diffY)) {
+                        if (diffX > 0 && snakeDir !== 'LEFT') snakeDir = 'RIGHT';
+                        else if (diffX < 0 && snakeDir !== 'RIGHT') snakeDir = 'LEFT';
+                    } else {
+                        if (diffY > 0 && snakeDir !== 'UP') snakeDir = 'DOWN';
+                        else if (diffY < 0 && snakeDir !== 'DOWN') snakeDir = 'UP';
+                    }
                 } else {
-                    if (diffY > 20) changeSnakeDir('DOWN');
-                    else if (diffY < -20) changeSnakeDir('UP');
+                    const rect = canvas.getBoundingClientRect();
+                    const tapX = e.changedTouches[0].clientX - rect.left;
+                    const tapY = e.changedTouches[0].clientY - rect.top;
+                    const head = snake[0];
+                    const headCanvasX = (head.x * 20) + 10;
+                    const headCanvasY = (head.y * 20) + 10;
+
+                    const dx = tapX - headCanvasX;
+                    const dy = tapY - headCanvasY;
+
+                    if (Math.abs(dx) > Math.abs(dy)) {
+                        if (dx > 0 && snakeDir !== 'LEFT') snakeDir = 'RIGHT';
+                        else if (dx < 0 && snakeDir !== 'RIGHT') snakeDir = 'LEFT';
+                    } else {
+                        if (dy > 0 && snakeDir !== 'UP') snakeDir = 'DOWN';
+                        else if (dy < 0 && snakeDir !== 'DOWN') snakeDir = 'UP';
+                    }
                 }
             };
         }
 
-        function changeSnakeDir(dir) {
-            if(dir==='UP' && snakeDir!=='DOWN') snakeDir='UP';
-            if(dir==='DOWN' && snakeDir!=='UP') snakeDir='DOWN';
-            if(dir==='LEFT' && snakeDir!=='RIGHT') snakeDir='LEFT';
-            if(dir==='RIGHT' && snakeDir!=='LEFT') snakeDir='RIGHT';
-        }
-
         function spawnSnakeFood() {
-            snakeFood = { x: Math.floor(Math.random() * 14), y: Math.floor(Math.random() * 14) };
+            snakeFood = { 
+                x: Math.floor(Math.random() * GRID_COUNT), 
+                y: Math.floor(Math.random() * GRID_COUNT) 
+            };
         }
 
         function updateSnake(ctx) {
@@ -1559,7 +2104,7 @@
             if(snakeDir==='LEFT') head.x--;
             if(snakeDir==='RIGHT') head.x++;
 
-            if(head.x < 0 || head.x >= 14 || head.y < 0 || head.y >= 14 || snake.some(s=>s.x===head.x && s.y===head.y)) {
+            if(head.x < 0 || head.x >= GRID_COUNT || head.y < 0 || head.y >= GRID_COUNT || snake.some(s=>s.x===head.x && s.y===head.y)) {
                 playSound('lose');
                 clearInterval(currentSnakeInterval);
                 document.getElementById('snakeStatus').innerText = `💥 Game Over! Final Score: ${snakeScore}`;
@@ -1572,15 +2117,38 @@
                 playSound('win');
                 snakeScore += 10;
                 document.getElementById('snakeStatus').innerText = `Score: ${snakeScore}`;
+                
+                if (snakeScore >= 50) {
+                    unlockAchievement('snake_pro');
+                }
+
                 spawnSnakeFood();
             } else {
                 snake.pop();
             }
 
-            ctx.fillStyle = '#030508'; ctx.fillRect(0,0,280,280);
-            ctx.fillStyle = '#f43f5e'; ctx.fillRect(snakeFood.x*20+2, snakeFood.y*20+2, 16, 16);
-            ctx.fillStyle = '#10b981';
-            snake.forEach(s => ctx.fillRect(s.x*20+1, s.y*20+1, 18, 18));
+            ctx.fillStyle = '#030508'; 
+            ctx.fillRect(0,0,400,400);
+
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.lineWidth = 1;
+            for(let i=0; i<400; i+=20) {
+                ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 400); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(400, i); ctx.stroke();
+            }
+
+            ctx.fillStyle = '#f43f5e'; 
+            ctx.shadowColor = '#f43f5e';
+            ctx.shadowBlur = 12;
+            ctx.fillRect(snakeFood.x*20+2, snakeFood.y*20+2, 16, 16);
+
+            snake.forEach((s, idx) => {
+                ctx.fillStyle = idx === 0 ? '#00f3ff' : '#10b981';
+                ctx.shadowColor = idx === 0 ? '#00f3ff' : '#10b981';
+                ctx.shadowBlur = idx === 0 ? 15 : 6;
+                ctx.fillRect(s.x*20+1, s.y*20+1, 18, 18);
+            });
+            ctx.shadowBlur = 0;
         }
 
         /* STATS LOGIC */
@@ -1589,7 +2157,13 @@
                 let played = parseInt(localStorage.getItem('hubPlayedCount') || '0');
                 let won = parseInt(localStorage.getItem('hubWonCount') || '0');
                 played++;
-                if (win) won++;
+                if (win) {
+                    won++;
+                    addXp(30);
+                    unlockAchievement('first_win');
+                } else {
+                    addXp(10);
+                }
                 localStorage.setItem('hubPlayedCount', played.toString());
                 localStorage.setItem('hubWonCount', won.toString());
                 updateStatsUI();
