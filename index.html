@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-texture="cyber">
+<html lang="en" data-texture="friends-warm">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Game Hub - Toxic Proposal Edition</title>
+    <title>Ultimate Game Hub</title>
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,61 +13,45 @@
 
     <style>
         :root {
-            --bg-dark: #020408;
-            --bg-surface: #080d1a;
-            --bg-surface-elevated: #0f172a;
-            --card-bg: rgba(10, 16, 30, 0.85);
-            --card-border: rgba(0, 243, 255, 0.22);
+            --bg-dark: #0a0306;
+            --bg-surface: #14080e;
+            --bg-surface-elevated: #220d18;
+            --card-bg: rgba(28, 10, 20, 0.85);
+            --card-border: rgba(255, 75, 110, 0.25);
             
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
+            --text-primary: #fff0f3;
+            --text-secondary: #f43f5e;
+            --text-muted: #9f6070;
             
-            --accent-primary: #00f3ff;
-            --accent-hover: #00c4d4;
-            --accent-glow: rgba(0, 243, 255, 0.4);
+            --accent-primary: #ff2a5f;
+            --accent-hover: #e01e4e;
+            --accent-glow: rgba(255, 42, 95, 0.4);
 
-            --glow-color-primary: rgba(0, 243, 255, 0.6);
-            --glow-color-secondary: rgba(99, 102, 241, 0.35);
-            --glow-border: rgba(0, 243, 255, 0.85);
-            --texture-badge: #00f3ff;
+            --glow-color-primary: rgba(255, 42, 95, 0.6);
+            --glow-border: rgba(255, 75, 110, 0.85);
+            --texture-badge: #ff4d7d;
 
-            --modal-bg: #060a12;
+            --modal-bg: #12050b;
             --radius-sm: 8px;
             --radius-md: 14px;
             --radius-lg: 22px;
             --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        html[data-texture="cyber"] {
-            --glow-color-primary: rgba(0, 243, 255, 0.6);
-            --glow-border: rgba(0, 243, 255, 0.85);
-            --texture-badge: #00f3ff;
-        }
-
-        html[data-texture="amethyst"] {
-            --glow-color-primary: rgba(168, 85, 247, 0.6);
-            --glow-border: rgba(168, 85, 247, 0.85);
-            --texture-badge: #a855f7;
-        }
-
-        html[data-texture="emerald"] {
-            --glow-color-primary: rgba(16, 185, 129, 0.6);
-            --glow-border: rgba(16, 185, 129, 0.85);
-            --texture-badge: #10b981;
-        }
-
-        html[data-texture="crimson"] {
-            --glow-color-primary: rgba(244, 63, 94, 0.6);
-            --glow-border: rgba(244, 63, 94, 0.85);
-            --texture-badge: #f43f5e;
+        /* PINKISH REDDISH WARM FAMILY FRIEND THEME */
+        html[data-texture="friends-warm"] {
+            --glow-color-primary: rgba(255, 42, 95, 0.6);
+            --glow-border: rgba(255, 75, 110, 0.85);
+            --texture-badge: #ff4d7d;
+            --accent-primary: #ff2a5f;
+            --card-border: rgba(255, 75, 110, 0.3);
         }
 
         /* INTRO SCREEN */
         .intro-screen {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #010204;
+            background: #060103;
             z-index: 999999;
             display: flex;
             flex-direction: column;
@@ -82,7 +66,7 @@
         .intro-bg-glow {
             position: absolute;
             width: 350px; height: 350px;
-            background: radial-gradient(circle, rgba(0, 243, 255, 0.35) 0%, rgba(99, 102, 241, 0.15) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 42, 95, 0.35) 0%, rgba(244, 63, 94, 0.15) 50%, transparent 70%);
             filter: blur(60px);
             border-radius: 50%;
             animation: pulseGlow 2s infinite alternate ease-in-out;
@@ -99,9 +83,9 @@
 
         .cube-face {
             position: absolute; width: 80px; height: 80px;
-            background: rgba(8, 13, 26, 0.95);
-            border: 1.5px solid rgba(0, 243, 255, 0.8);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+            background: rgba(20, 8, 14, 0.95);
+            border: 1.5px solid rgba(255, 75, 110, 0.8);
+            box-shadow: 0 0 20px rgba(255, 42, 95, 0.4);
             display: flex; align-items: center; justify-content: center;
             font-size: 2rem; color: #ffffff; border-radius: 14px;
             backface-visibility: visible;
@@ -118,21 +102,21 @@
             margin-top: 35px; font-size: 1.8rem; font-weight: 800; letter-spacing: 5px;
             color: #ffffff; text-transform: uppercase;
             font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(135deg, #ffffff, #00f3ff, #6366f1);
+            background: linear-gradient(135deg, #ffffff, #ff2a5f, #fb7185);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px rgba(0, 243, 255, 0.6); z-index: 2;
+            text-shadow: 0 0 25px rgba(255, 42, 95, 0.6); z-index: 2;
         }
 
         .intro-sub {
-            color: #94a3b8; font-size: 0.8rem; letter-spacing: 3px; margin-top: 8px;
+            color: #f43f5e; font-size: 0.8rem; letter-spacing: 3px; margin-top: 8px;
             text-transform: uppercase; font-weight: 600; z-index: 2;
         }
 
         .intro-progress-bar {
             position: absolute; bottom: 0; left: 0; height: 3px;
-            background: linear-gradient(90deg, #00f3ff, #6366f1, #a855f7);
+            background: linear-gradient(90deg, #ff2a5f, #fb7185, #f43f5e);
             width: 0%; animation: loadProgress 3.0s linear forwards;
-            box-shadow: 0 0 12px #00f3ff;
+            box-shadow: 0 0 12px #ff2a5f;
         }
 
         @keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
@@ -150,15 +134,15 @@
             background-color: var(--bg-dark); color: var(--text-primary);
             min-height: 100vh; overflow-x: hidden; width: 100%;
             background-image: 
-                radial-gradient(at 15% 15%, rgba(0, 243, 255, 0.08) 0px, transparent 55%),
-                radial-gradient(at 85% 85%, rgba(99, 102, 241, 0.08) 0px, transparent 55%),
-                linear-gradient(to bottom, rgba(2, 4, 8, 0.9), rgba(2, 4, 8, 1));
+                radial-gradient(at 15% 15%, rgba(255, 42, 95, 0.12) 0px, transparent 55%),
+                radial-gradient(at 85% 85%, rgba(244, 63, 94, 0.12) 0px, transparent 55%),
+                linear-gradient(to bottom, rgba(10, 3, 6, 0.95), rgba(10, 3, 6, 1));
             background-attachment: fixed; transition: var(--transition-smooth);
         }
 
         body.mobile-mode {
             max-width: 414px; height: 850px; max-height: 90vh; margin: 20px auto;
-            border: 12px solid #161b26; border-radius: 40px;
+            border: 12px solid #220d18; border-radius: 40px;
             box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95);
             position: relative; overflow-y: auto; overflow-x: hidden;
         }
@@ -171,12 +155,12 @@
 
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: rgba(0, 243, 255, 0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 42, 95, 0.3); border-radius: 4px; }
 
         /* OVERLAYS & CARDS */
         .entry-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(2, 4, 8, 0.95); backdrop-filter: blur(20px);
+            background: rgba(10, 3, 6, 0.95); backdrop-filter: blur(20px);
             z-index: 99999; display: flex; justify-content: center; align-items: center;
             transition: opacity 0.4s ease, visibility 0.4s ease;
         }
@@ -206,7 +190,7 @@
             font-size: 1.25rem; font-weight: 700;
             color: #ffffff;
             background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(0, 243, 255, 0.3);
+            border: 1px solid rgba(255, 42, 95, 0.3);
             border-radius: var(--radius-md);
             padding: 20px 16px; margin: 20px 0;
             min-height: 80px; display: flex; align-items: center; justify-content: center;
@@ -228,7 +212,7 @@
             border-radius: 14px; cursor: pointer; transition: var(--transition-smooth);
         }
         .avatar-option:hover, .avatar-option.selected {
-            border-color: var(--texture-badge); background: rgba(0, 243, 255, 0.1);
+            border-color: var(--texture-badge); background: rgba(255, 42, 95, 0.15);
             transform: translateY(-3px) scale(1.08);
         }
 
@@ -242,8 +226,8 @@
         .form-group input:focus { border-color: var(--accent-primary); box-shadow: 0 0 15px var(--accent-glow); background: rgba(255, 255, 255, 0.06); }
 
         .btn-submit {
-            width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent-primary), #0088ff);
-            color: #000; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 0.95rem; cursor: pointer;
+            width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent-primary), #fb7185);
+            color: #ffffff; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 0.95rem; cursor: pointer;
             transition: var(--transition-smooth); box-shadow: 0 8px 20px var(--accent-glow);
             font-family: 'Orbitron', sans-serif; letter-spacing: 1px;
         }
@@ -251,8 +235,8 @@
 
         .navbar {
             display: flex; justify-content: space-between; align-items: center; padding: 18px 5%;
-            background: rgba(6, 10, 18, 0.9); backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2); position: sticky; top: 0; z-index: 100;
+            background: rgba(18, 5, 11, 0.9); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 42, 95, 0.2); position: sticky; top: 0; z-index: 100;
             width: 100%;
         }
 
@@ -260,7 +244,7 @@
             display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.25rem; letter-spacing: 1px;
             color: var(--text-primary); text-decoration: none; font-family: 'Orbitron', sans-serif;
         }
-        .brand-logo i { color: var(--accent-primary); background: rgba(0, 243, 255, 0.12); padding: 9px; border-radius: 12px; font-size: 1.1rem; }
+        .brand-logo i { color: var(--accent-primary); background: rgba(255, 42, 95, 0.12); padding: 9px; border-radius: 12px; font-size: 1.1rem; }
         .brand-logo span { color: var(--accent-primary); }
 
         .nav-actions { display: flex; align-items: center; gap: 8px; }
@@ -272,10 +256,10 @@
         }
 
         .level-badge-nav {
-            background: linear-gradient(135deg, #00f3ff, #0066ff);
-            color: #000; font-family: 'Orbitron', sans-serif; font-weight: 900;
+            background: linear-gradient(135deg, #ff2a5f, #fb7185);
+            color: #fff; font-family: 'Orbitron', sans-serif; font-weight: 900;
             padding: 4px 10px; border-radius: 20px; font-size: 0.75rem;
-            box-shadow: 0 0 12px rgba(0, 243, 255, 0.6);
+            box-shadow: 0 0 12px rgba(255, 42, 95, 0.6);
         }
 
         .icon-btn {
@@ -283,27 +267,27 @@
             color: var(--text-primary); width: 38px; height: 38px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-smooth);
         }
-        .icon-btn:hover { background: rgba(0, 243, 255, 0.12); border-color: var(--glow-border); transform: translateY(-2px); }
+        .icon-btn:hover { background: rgba(255, 42, 95, 0.15); border-color: var(--glow-border); transform: translateY(-2px); }
 
         /* HERO & LEVEL BAR */
         .hero { text-align: center; padding: 40px 20px 20px 20px; max-width: 800px; margin: 0 auto; }
         .hero-badge {
-            display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 243, 255, 0.1);
-            border: 1px solid rgba(0, 243, 255, 0.3); color: #00f3ff; font-size: 0.78rem; font-weight: 700;
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 42, 95, 0.12);
+            border: 1px solid rgba(255, 42, 95, 0.3); color: var(--accent-primary); font-size: 0.78rem; font-weight: 700;
             padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px;
         }
         .hero h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 14px; font-family: 'Orbitron', sans-serif; }
-        .hero h1 span { background: linear-gradient(135deg, #ffffff, #00f3ff, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero h1 span { background: linear-gradient(135deg, #ffffff, var(--accent-primary), #fb7185); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         /* LEVEL & XP DISPLAY CARD */
         .xp-dashboard-card {
-            background: rgba(8, 13, 26, 0.9);
-            border: 1px solid rgba(0, 243, 255, 0.3);
+            background: rgba(20, 8, 14, 0.9);
+            border: 1px solid var(--card-border);
             border-radius: var(--radius-md);
             padding: 18px 24px;
             margin: 15px auto 25px auto;
             max-width: 650px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7), inset 0 0 15px rgba(0, 243, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7), inset 0 0 15px rgba(255, 42, 95, 0.08);
         }
 
         .xp-meta-row {
@@ -317,9 +301,9 @@
         }
 
         .xp-bar-fill {
-            height: 100%; background: linear-gradient(90deg, #00f3ff, #6366f1, #a855f7);
+            height: 100%; background: linear-gradient(90deg, var(--accent-primary), #fb7185, #f43f5e);
             border-radius: 12px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 14px rgba(0, 243, 255, 0.9);
+            box-shadow: 0 0 14px var(--accent-primary);
         }
 
         .controls-bar {
@@ -341,7 +325,7 @@
             color: var(--text-secondary); padding: 8px 16px; border-radius: 20px;
             font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: var(--transition-smooth);
         }
-        .filter-chip:hover, .filter-chip.active { background: #00f3ff; color: #000; border-color: #00f3ff; box-shadow: 0 4px 14px rgba(0, 243, 255, 0.5); font-weight: 800; }
+        .filter-chip:hover, .filter-chip.active { background: var(--accent-primary); color: #fff; border-color: var(--accent-primary); box-shadow: 0 4px 14px var(--accent-glow); font-weight: 800; }
 
         /* SECTOR HEADINGS */
         .sector-title {
@@ -376,7 +360,7 @@
             padding: 28px; 
             position: relative; 
             backdrop-filter: blur(16px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 243, 255, 0.03);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 42, 95, 0.03);
             transition: transform 0.25s ease-out, border-color 0.35s ease, box-shadow 0.35s ease;
             cursor: pointer; 
             overflow: visible; 
@@ -406,11 +390,10 @@
             transform-style: preserve-3d;
         }
 
-        /* SEPARATE 3D FLOATING LOGO BOX WITH FULL ROTATION */
         .card-icon-box {
             width: 62px; height: 62px; border-radius: 18px; 
-            background: rgba(0, 243, 255, 0.08);
-            border: 1.5px solid rgba(0, 243, 255, 0.4); 
+            background: rgba(255, 42, 95, 0.12);
+            border: 1.5px solid var(--card-border); 
             display: flex; align-items: center; justify-content: center;
             font-size: 1.8rem; color: var(--accent-primary); 
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
@@ -420,11 +403,11 @@
         }
 
         .game-card:hover .card-icon-box { 
-            background: rgba(0, 243, 255, 0.25); 
-            border-color: #00f3ff; 
-            color: #00f3ff;
+            background: rgba(255, 42, 95, 0.28); 
+            border-color: var(--accent-primary); 
+            color: var(--accent-primary);
             transform: translateZ(75px) rotateY(-25deg) rotateX(15deg) scale(1.22);
-            box-shadow: -15px 22px 35px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 243, 255, 0.8);
+            box-shadow: -15px 22px 35px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-primary);
         }
 
         .card-title { 
@@ -432,56 +415,56 @@
             transform: translateZ(30px); transition: transform 0.3s ease;
         }
         .card-desc { 
-            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 22px;
+            font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 22px;
             transform: translateZ(18px); transition: transform 0.3s ease;
         }
 
         /* SPECIAL TOXIC REDDISH CYBER CARD */
         .game-card.toxic-special-card {
-            background: linear-gradient(145deg, rgba(35, 6, 12, 0.95), rgba(12, 2, 5, 0.95));
-            border: 1.5px solid #ff003c;
-            box-shadow: 0 0 25px rgba(255, 0, 60, 0.35);
+            background: linear-gradient(145deg, rgba(40, 10, 20, 0.95), rgba(18, 5, 10, 0.95));
+            border: 1.5px solid #ff2a5f;
+            box-shadow: 0 0 25px rgba(255, 42, 95, 0.35);
             animation: pulseToxic 3s infinite alternate;
         }
         .game-card.toxic-special-card:hover {
-            border-color: #ff003c;
-            box-shadow: 0 0 40px rgba(255, 0, 60, 0.8), 0 0 15px #ff003c;
+            border-color: #ff2a5f;
+            box-shadow: 0 0 40px rgba(255, 42, 95, 0.8), 0 0 15px #ff2a5f;
         }
         .game-card.toxic-special-card .card-icon-box {
-            background: rgba(255, 0, 60, 0.15);
-            border-color: rgba(255, 0, 60, 0.5);
-            color: #ff3b6b;
-            text-shadow: 0 0 15px rgba(255, 59, 107, 0.9);
+            background: rgba(255, 42, 95, 0.2);
+            border-color: rgba(255, 42, 95, 0.5);
+            color: #ff4d7d;
+            text-shadow: 0 0 15px rgba(255, 77, 125, 0.9);
         }
         .game-card.toxic-special-card .card-badge-toxic {
-            background: rgba(255, 0, 60, 0.25);
-            border: 1px solid #ff003c;
-            color: #ff4d73;
+            background: rgba(255, 42, 95, 0.25);
+            border: 1px solid #ff2a5f;
+            color: #ff7597;
             font-size: 0.72rem; font-weight: 800; padding: 5px 12px; border-radius: 20px; letter-spacing: 1px;
             font-family: 'Orbitron', sans-serif;
-            box-shadow: 0 0 12px rgba(255, 0, 60, 0.5);
+            box-shadow: 0 0 12px rgba(255, 42, 95, 0.5);
         }
 
         @keyframes pulseToxic {
-            0% { box-shadow: 0 0 15px rgba(255, 0, 60, 0.3); }
-            100% { box-shadow: 0 0 32px rgba(255, 0, 60, 0.65); }
+            0% { box-shadow: 0 0 15px rgba(255, 42, 95, 0.3); }
+            100% { box-shadow: 0 0 32px rgba(255, 42, 95, 0.65); }
         }
 
         .card-badge {
-            background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4);
-            color: #34d399; font-size: 0.72rem; font-weight: 800; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.5px;
+            background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.4);
+            color: #fb7185; font-size: 0.72rem; font-weight: 800; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.5px;
             transform: translateZ(20px);
         }
 
         .play-btn-action {
-            width: 100%; padding: 13px; background: linear-gradient(135deg, var(--accent-primary), #0088ff);
-            color: #000; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 0.9rem; cursor: pointer;
-            transition: var(--transition-smooth); box-shadow: 0 4px 15px rgba(0, 243, 255, 0.4);
+            width: 100%; padding: 13px; background: linear-gradient(135deg, var(--accent-primary), #fb7185);
+            color: #fff; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 0.9rem; cursor: pointer;
+            transition: var(--transition-smooth); box-shadow: 0 4px 15px var(--accent-glow);
             display: flex; align-items: center; justify-content: center; gap: 8px;
             font-family: 'Orbitron', sans-serif; letter-spacing: 0.5px;
             transform: translateZ(20px);
         }
-        .play-btn-action:hover { box-shadow: 0 8px 25px rgba(0, 243, 255, 0.7); }
+        .play-btn-action:hover { box-shadow: 0 8px 25px var(--accent-glow); }
 
         .rating-widget { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); transform: translateZ(12px); }
         .rating-btns { display: flex; gap: 8px; margin-bottom: 8px; }
@@ -490,11 +473,11 @@
             background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-muted); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: var(--transition-smooth);
         }
-        .like-chip:hover, .like-chip.voted { background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #f87171; }
-        .dislike-chip:hover, .dislike-chip.voted { background: rgba(148, 163, 184, 0.15); border-color: #94a3b8; color: #cbd5e1; }
+        .like-chip:hover, .like-chip.voted { background: rgba(255, 42, 95, 0.18); border-color: #ff2a5f; color: #ff7597; }
+        .dislike-chip:hover, .dislike-chip.voted { background: rgba(159, 96, 112, 0.18); border-color: #9f6070; color: #f43f5e; }
 
         .progress-bar-bg { width: 100%; height: 5px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; overflow: hidden; margin-top: 6px; }
-        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #ec4899, #ef4444); border-radius: 10px; transition: width 0.4s ease; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #ff2a5f, #fb7185); border-radius: 10px; transition: width 0.4s ease; }
         .rating-meta { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; font-weight: 600; }
 
         /* ACHIEVEMENT LIST STYLES IN MODAL */
@@ -512,35 +495,27 @@
         }
 
         .achieve-card-item.unlocked {
-            border-color: rgba(0, 243, 255, 0.5);
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.12), rgba(99, 102, 241, 0.06));
-            box-shadow: 0 4px 18px rgba(0, 243, 255, 0.2);
+            border-color: rgba(255, 42, 95, 0.5);
+            background: linear-gradient(135deg, rgba(255, 42, 95, 0.15), rgba(251, 113, 133, 0.08));
+            box-shadow: 0 4px 18px rgba(255, 42, 95, 0.2);
         }
 
         .achieve-icon-box {
             width: 48px; height: 48px; border-radius: 12px;
             background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; color: #64748b; flex-shrink: 0;
+            font-size: 1.4rem; color: #9f6070; flex-shrink: 0;
         }
 
         .achieve-card-item.unlocked .achieve-icon-box {
-            background: rgba(0, 243, 255, 0.2); border-color: #00f3ff;
-            color: #00f3ff; box-shadow: 0 0 12px rgba(0, 243, 255, 0.5);
+            background: rgba(255, 42, 95, 0.2); border-color: #ff2a5f;
+            color: #ff2a5f; box-shadow: 0 0 12px rgba(255, 42, 95, 0.5);
         }
 
         .achieve-info { flex: 1; }
         .achieve-title { font-size: 0.95rem; font-weight: 800; color: var(--text-primary); font-family: 'Orbitron', sans-serif; }
-        .achieve-desc { font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px; }
+        .achieve-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
         .achieve-reward { font-size: 0.75rem; color: var(--texture-badge); font-weight: 700; margin-top: 4px; }
-
-        .key-code-badge {
-            display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 243, 255, 0.15);
-            border: 1px solid #00f3ff; padding: 4px 10px; border-radius: 6px;
-            color: #00f3ff; font-family: 'Fira Code', monospace; font-weight: 800; font-size: 0.8rem; margin-top: 6px;
-            cursor: pointer;
-        }
-        .key-code-badge:hover { background: #00f3ff; color: #000; }
 
         /* REALTIME TOAST NOTIFICATION */
         .toast-container {
@@ -549,9 +524,9 @@
         }
 
         .achievement-toast {
-            background: rgba(6, 10, 18, 0.96);
-            border: 1.5px solid #00f3ff;
-            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.4), 0 0 20px #00f3ff;
+            background: rgba(18, 5, 11, 0.96);
+            border: 1.5px solid var(--accent-primary);
+            box-shadow: 0 10px 30px var(--accent-glow);
             border-radius: 14px; padding: 14px 20px;
             display: flex; align-items: center; gap: 14px;
             min-width: 300px; backdrop-filter: blur(12px);
@@ -567,17 +542,17 @@
         /* CYBER MODALS & HIGH-TECH BARS */
         .modal-backdrop {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(1, 2, 4, 0.93); backdrop-filter: blur(18px); z-index: 10000;
+            background: rgba(6, 1, 3, 0.93); backdrop-filter: blur(18px); z-index: 10000;
             display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
         .modal-backdrop.active { opacity: 1; pointer-events: auto; }
 
         .modal-box {
             background: var(--modal-bg); 
-            border: 1px solid rgba(0, 243, 255, 0.35); 
+            border: 1px solid var(--card-border); 
             border-radius: var(--radius-lg);
             padding: 26px 22px; width: 92%; max-width: 520px; position: relative; 
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 243, 255, 0.25);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px var(--accent-glow);
             max-height: 88vh; overflow-y: auto; overflow-x: hidden;
         }
 
@@ -590,7 +565,7 @@
 
         .settings-nav { display: flex; gap: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px; margin-bottom: 20px; }
         .settings-tab-btn { background: none; border: none; color: var(--text-muted); font-weight: 700; font-size: 0.85rem; padding: 8px 14px; border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition-smooth); }
-        .settings-tab-btn.active { color: #000; background: #00f3ff; font-weight: 800; }
+        .settings-tab-btn.active { color: #fff; background: var(--accent-primary); font-weight: 800; }
 
         .texture-preset-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         @media (max-width: 480px) {
@@ -602,7 +577,7 @@
             padding: 12px; cursor: pointer; transition: var(--transition-smooth); display: flex; flex-direction: column; gap: 6px;
         }
         .texture-preset-card:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.06); }
-        .texture-preset-card.selected { border-color: var(--accent-primary); background: rgba(0, 243, 255, 0.12); box-shadow: 0 0 15px var(--accent-glow); }
+        .texture-preset-card.selected { border-color: var(--accent-primary); background: rgba(255, 42, 95, 0.15); box-shadow: 0 0 15px var(--accent-glow); }
         .preset-preview-circle { width: 20px; height: 20px; border-radius: 50%; display: inline-block; border: 2px solid rgba(255,255,255,0.2); }
         .preset-title { font-size: 0.84rem; font-weight: 700; color: var(--text-primary); }
         .preset-desc { font-size: 0.72rem; color: var(--text-muted); }
@@ -610,22 +585,22 @@
         .game-input-row { display: flex; gap: 10px; margin-top: 12px; }
         .game-input-row input { 
             flex: 1; padding: 14px; background: rgba(0, 0, 0, 0.5); 
-            border: 1.5px solid rgba(0, 243, 255, 0.4); border-radius: var(--radius-md); 
-            color: #00f3ff; font-family: 'Fira Code', monospace; font-size: 1.1rem; font-weight: 700; outline: none; width: 100%; text-align: center;
+            border: 1.5px solid var(--card-border); border-radius: var(--radius-md); 
+            color: var(--accent-primary); font-family: 'Fira Code', monospace; font-size: 1.1rem; font-weight: 700; outline: none; width: 100%; text-align: center;
             box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
         }
-        .game-input-row input:focus { border-color: #00f3ff; box-shadow: 0 0 18px rgba(0, 243, 255, 0.5); }
+        .game-input-row input:focus { border-color: var(--accent-primary); box-shadow: 0 0 18px var(--accent-glow); }
 
         .sub-btn-group { display: flex; gap: 8px; margin-top: 8px; }
-        .sub-btn { flex: 1; padding: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-secondary); border-radius: var(--radius-sm); font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: var(--transition-smooth); }
-        .sub-btn.active { background: var(--accent-primary); color: #000; border-color: var(--accent-primary); font-weight: 800; }
+        .sub-btn { flex: 1; padding: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-muted); border-radius: var(--radius-sm); font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: var(--transition-smooth); }
+        .sub-btn.active { background: var(--accent-primary); color: #fff; border-color: var(--accent-primary); font-weight: 800; }
 
         .game-status-box { 
-            background: rgba(0, 243, 255, 0.05); 
-            border: 1px solid rgba(0, 243, 255, 0.25); 
+            background: rgba(255, 42, 95, 0.08); 
+            border: 1px solid rgba(255, 42, 95, 0.3); 
             padding: 16px; border-radius: var(--radius-md); 
             text-align: center; font-weight: 700; margin: 18px 0; font-size: 0.95rem; 
-            color: #e0f7fc;
+            color: #ffe4e6;
             box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
             letter-spacing: 0.5px;
         }
@@ -645,8 +620,8 @@
 
         .rps-card-option {
             flex: 1;
-            background: linear-gradient(145deg, rgba(20, 30, 50, 0.8), rgba(10, 15, 25, 0.9));
-            border: 1.5px solid rgba(0, 243, 255, 0.25);
+            background: linear-gradient(145deg, rgba(35, 12, 22, 0.8), rgba(20, 6, 12, 0.9));
+            border: 1.5px solid rgba(255, 42, 95, 0.25);
             border-radius: 16px;
             padding: 18px 10px;
             text-align: center;
@@ -661,25 +636,25 @@
 
         .rps-card-option:hover {
             transform: translateY(-8px) scale(1.05);
-            border-color: #00f3ff;
-            box-shadow: 0 12px 25px rgba(0, 243, 255, 0.4), 0 0 15px rgba(0, 243, 255, 0.2);
-            background: linear-gradient(145deg, rgba(30, 45, 75, 0.9), rgba(15, 22, 38, 0.95));
+            border-color: #ff2a5f;
+            box-shadow: 0 12px 25px rgba(255, 42, 95, 0.4), 0 0 15px rgba(255, 42, 95, 0.2);
+            background: linear-gradient(145deg, rgba(50, 18, 32, 0.9), rgba(30, 10, 20, 0.95));
         }
 
         .rps-icon-wrapper {
             width: 55px; height: 55px;
             border-radius: 50%;
-            background: rgba(0, 243, 255, 0.1);
-            border: 1px solid rgba(0, 243, 255, 0.3);
+            background: rgba(255, 42, 95, 0.12);
+            border: 1px solid rgba(255, 42, 95, 0.3);
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem; color: #00f3ff;
+            font-size: 1.6rem; color: #ff2a5f;
             transition: var(--transition-smooth);
         }
 
         .rps-card-option:hover .rps-icon-wrapper {
-            background: #00f3ff;
-            color: #000;
-            box-shadow: 0 0 15px #00f3ff;
+            background: #ff2a5f;
+            color: #fff;
+            box-shadow: 0 0 15px #ff2a5f;
         }
 
         .rps-card-label {
@@ -719,130 +694,120 @@
         .ttt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 220px; margin: 15px auto; }
         .ttt-cell { width: 65px; height: 65px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-smooth); }
         .ttt-cell:hover { background: rgba(255,255,255,0.1); border-color: var(--texture-badge); }
-        .ttt-cell.x { color: #00f3ff; }
-        .ttt-cell.o { color: #f43f5e; }
+        .ttt-cell.x { color: #ff2a5f; }
+        .ttt-cell.o { color: #fb7185; }
 
         .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 260px; margin: 15px auto; }
         .memory-card { width: 55px; height: 55px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.3s ease; transform-style: preserve-3d; }
-        .memory-card.flipped { background: rgba(0, 243, 255, 0.2); border-color: #00f3ff; }
+        .memory-card.flipped { background: rgba(255, 42, 95, 0.25); border-color: #ff2a5f; }
 
         /* HIGH-DEF BIG NEON SNAKE CANVAS STYLES */
         #snakeCanvas { 
-            background: #010306; 
-            border: 2px solid rgba(0, 243, 255, 0.4); 
+            background: #060103; 
+            border: 2px solid rgba(255, 42, 95, 0.4); 
             border-radius: 16px; 
             display: block; 
             margin: 15px auto; 
             width: 100%; 
             max-width: 400px; 
             height: auto; 
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.25), inset 0 0 15px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 25px rgba(255, 42, 95, 0.25), inset 0 0 15px rgba(0, 0, 0, 0.9);
             touch-action: none; 
             cursor: pointer;
         }
 
-        /* ROMANTIC PROPOSAL ANIMATION STYLES */
-        .romantic-container {
+        /* BEST FRIENDS FOREVER (BFF) TOXIC DISPLAY STYLES */
+        .bff-container {
             position: relative;
             padding: 35px 20px;
-            background: radial-gradient(circle, rgba(255, 20, 147, 0.28) 0%, rgba(15, 5, 20, 0.96) 85%);
-            border: 2px solid #ff2a70;
+            background: radial-gradient(circle, rgba(255, 42, 95, 0.22) 0%, rgba(20, 6, 12, 0.96) 85%);
+            border: 2px solid #ff2a5f;
             border-radius: 22px;
-            box-shadow: 0 0 45px rgba(255, 42, 112, 0.7), inset 0 0 25px rgba(255, 42, 112, 0.35);
+            box-shadow: 0 0 45px rgba(255, 42, 95, 0.45), inset 0 0 25px rgba(255, 42, 95, 0.2);
             text-align: center;
             overflow: hidden;
-            min-height: 280px;
+            min-height: 320px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        .romantic-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.2rem;
-            color: #ff3b75;
-            text-shadow: 0 0 18px rgba(255, 59, 117, 0.9), 0 0 35px #ff0055;
-            margin: 10px 0;
-            animation: pulseHeartText 1.5s infinite alternate ease-in-out;
+        .bff-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ff4d7d;
+            text-shadow: 0 0 20px rgba(255, 42, 95, 0.8), 0 0 35px #e01e4e;
+            margin: 12px 0;
             transition: all 0.5s ease;
+            letter-spacing: 1.5px;
         }
 
-        .proposal-btn-group {
+        .bff-btn-group {
             display: flex;
-            gap: 16px;
-            margin-top: 20px;
+            gap: 14px;
+            margin-top: 18px;
             justify-content: center;
             width: 100%;
-            max-width: 300px;
+            max-width: 380px;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             pointer-events: none;
         }
 
-        .proposal-btn-group.show {
+        .bff-btn-group.show {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
         }
 
-        .btn-yes {
+        .btn-bff-action {
             flex: 1;
-            padding: 12px 20px;
-            background: linear-gradient(135deg, #ff0055, #ff3b75);
-            color: white;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, #ff2a5f, #fb7185);
+            color: #fff;
             border: none;
-            border-radius: 30px;
+            border-radius: 14px;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+            box-shadow: 0 0 20px rgba(255, 42, 95, 0.5);
             transition: var(--transition-smooth);
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Orbitron', sans-serif;
         }
 
-        .btn-yes:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 30px rgba(255, 0, 85, 0.9);
+        .btn-bff-action:hover {
+            transform: scale(1.06);
+            box-shadow: 0 0 30px rgba(255, 42, 95, 0.8);
         }
 
-        .btn-no {
-            flex: 1;
-            padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fda4af;
-            border: 1px solid rgba(255, 105, 180, 0.4);
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .btn-no:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .floating-heart {
+        .floating-stars {
             position: absolute;
-            color: #ff2a70;
-            font-size: 1.8rem;
+            color: #ff4d7d;
+            font-size: 1.5rem;
             opacity: 0.8;
             pointer-events: none;
-            animation: floatUpHearts 4s linear infinite;
+            animation: floatUpStars 4s linear infinite;
         }
 
-        @keyframes floatUpHearts {
+        @keyframes floatUpStars {
             0% { transform: translateY(100px) scale(0.6) rotate(0deg); opacity: 0; }
             50% { opacity: 0.9; }
             100% { transform: translateY(-300px) scale(1.3) rotate(360deg); opacity: 0; }
         }
 
-        @keyframes pulseHeartText {
-            0% { transform: scale(0.96); text-shadow: 0 0 15px rgba(255, 59, 117, 0.7); }
-            100% { transform: scale(1.06); text-shadow: 0 0 30px rgba(255, 59, 117, 1), 0 0 50px #ff0055; }
+        /* SUBTLE WHATSAPP TEXT STYLE */
+        .whatsapp-subtext {
+            font-size: 0.68rem;
+            color: rgba(255, 255, 255, 0.38);
+            font-weight: 500;
+            margin-top: 4px;
+            text-align: right;
+            width: 100%;
+            letter-spacing: 0.5px;
+            user-select: none;
         }
 
         footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid rgba(255, 255, 255, 0.04); }
@@ -859,11 +824,11 @@
         <div class="intro-bg-glow"></div>
         <div class="cube-container">
             <div class="cube-face front"><i class="fa-solid fa-gamepad"></i></div>
-            <div class="cube-face back"><i class="fa-solid fa-vr-cardboard"></i></div>
+            <div class="cube-face back"><i class="fa-solid fa-user-group"></i></div>
             <div class="cube-face right"><i class="fa-solid fa-trophy"></i></div>
-            <div class="cube-face left"><i class="fa-solid fa-ghost"></i></div>
+            <div class="cube-face left"><i class="fa-solid fa-heart"></i></div>
             <div class="cube-face top"><i class="fa-solid fa-bolt"></i></div>
-            <div class="cube-face bottom"><i class="fa-solid fa-heart"></i></div>
+            <div class="cube-face bottom"><i class="fa-solid fa-star"></i></div>
         </div>
         <div class="intro-title">Ultimate Game Hub</div>
         <div class="intro-sub">Initializing Portal...</div>
@@ -906,7 +871,7 @@
             <div style="font-size: 2.8rem; color: var(--accent-primary); margin-bottom: 10px;">
                 <i class="fa-solid fa-terminal"></i>
             </div>
-            <h3 style="font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary);">
+            <h3 style="font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted);">
                 System Verification
             </h3>
 
@@ -940,13 +905,13 @@
 
     <!-- HERO & LEVEL SYSTEM DASHBOARD -->
     <section class="hero">
-        <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> High-Performance Cyber Gaming</div>
-        <h1>Next-Gen Arcade <span>Experience</span></h1>
+        <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> High-Performance Gaming</div>
+        <h1>Next-Gen Arcade <span>Hub</span></h1>
         
         <!-- LEVEL & XP PROGRESS DASHBOARD CARD -->
         <div class="xp-dashboard-card">
             <div class="xp-meta-row">
-                <span style="color: #00f3ff;" id="dashboardLevelText">LEVEL 1 APPRENTICE</span>
+                <span style="color: var(--accent-primary);" id="dashboardLevelText">LEVEL 1 APPRENTICE</span>
                 <span style="color: var(--texture-badge);" id="dashboardXpText">0 / 100 XP</span>
             </div>
             <div class="xp-bar-bg">
@@ -971,7 +936,7 @@
             <button class="filter-chip" onclick="setCategoryFilter('playable', this)">Playable Now</button>
             <button class="filter-chip" onclick="setCategoryFilter('arcade', this)">Arcade</button>
             <button class="filter-chip" onclick="setCategoryFilter('strategy', this)">Strategy</button>
-            <button class="filter-chip" onclick="setCategoryFilter('toxic', this)">Toxic Protocol</button>
+            <button class="filter-chip" id="toxicFilterBtn" style="display: none;" onclick="setCategoryFilter('toxic', this)">Toxic Protocol</button>
         </div>
     </div>
 
@@ -1112,27 +1077,27 @@
         </div>
     </section>
 
-    <!-- NEW TOXIC PROJECT SECTOR -->
-    <section class="games-section" style="padding-top: 0;">
-        <div class="sector-title" style="border-color: #ff003c; color: #ff3b6b;">
+    <!-- SECRET TOXIC PROJECT SECTOR (HIDDEN UNTIL BYPASS CODE IS ENTERED) -->
+    <section class="games-section" id="toxicSector" style="padding-top: 0; display: none;">
+        <div class="sector-title" style="border-color: #ff2a5f; color: #ff7597;">
             <i class="fa-solid fa-biohazard"></i> Secret Protocol Sector
         </div>
         
         <div class="games-grid">
-            <!-- TOXIC SPECIAL GAME CARD -->
+            <!-- TOXIC SPECIAL GAME CARD (FREE TO OPEN AFTER BYPASS) -->
             <div class="game-card toxic-special-card" data-category="toxic arcade strategy" data-title="toxic" onclick="handleToxicClick()">
                 <div class="card-content-inner">
                     <div class="card-top">
                         <div class="card-icon-box"><i class="fa-solid fa-biohazard"></i></div>
-                        <span class="card-badge-toxic" id="toxicCardStatus">🔒 LOCKED / CODE REQ</span>
+                        <span class="card-badge-toxic" id="toxicCardStatus" style="background: rgba(255, 42, 95, 0.2); border-color: #ff2a5f; color: #ff7597;">🔓 UNLOCKED / FREE TO OPEN</span>
                     </div>
-                    <h3 class="card-title" style="color: #ff3b6b; font-family: 'Orbitron', sans-serif; letter-spacing: 1.5px;">TOXIC</h3>
-                    <p class="card-desc" style="color: #fda4af;">Highly classified cyber protocol. Requires Level 100 Mastery Key Code to unlock clearance.</p>
+                    <h3 class="card-title" style="color: #ff4d7d; font-family: 'Orbitron', sans-serif; letter-spacing: 1.5px;">TOXIC PROTOCOL</h3>
+                    <p class="card-desc" style="color: #ffe4e6;">Classified portal unlocked. Click to open Member Log & Friendship Home.</p>
                 </div>
 
                 <div>
-                    <button class="play-btn-action" id="toxicBtnAction" style="background: linear-gradient(135deg, #ff003c, #990024); color: white; border: 1px solid #ff003c;">
-                        <i class="fa-solid fa-lock"></i> Enter Clearance Key
+                    <button class="play-btn-action" id="toxicBtnAction" style="background: linear-gradient(135deg, #ff2a5f, #fb7185); color: #fff; border: none;">
+                        <i class="fa-solid fa-user-group"></i> Open Friendship Portal
                     </button>
                     
                     <div class="rating-widget" onclick="event.stopPropagation()">
@@ -1162,20 +1127,36 @@
 
             <!-- ACHIEVEMENTS TAB -->
             <div id="achieveTab" class="settings-content">
-                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 12px;">Complete challenges to earn XP and level up to Level 100!</p>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Complete challenges to earn XP and level up to Level 100!</p>
                 <div class="achievement-list-grid" id="achievementListContainer"></div>
             </div>
 
             <div id="textureTab" class="settings-content" style="display: none;">
-                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 14px;">Select an accent glow color preset:</p>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">Select an accent glow color preset:</p>
 
                 <div class="texture-preset-grid">
-                    <div class="texture-preset-card selected" id="preset-cyber" onclick="applyTexturePreset('cyber')">
+                    <div class="texture-preset-card selected" id="preset-friends-warm" onclick="applyTexturePreset('friends-warm')">
                         <div style="display: flex; align-items: center; justify-content: space-between;">
-                            <span class="preset-title">Cyber Neon</span>
-                            <span class="preset-preview-circle" style="background: #00f3ff;"></span>
+                            <span class="preset-title">Reddish Pink Warm 💖</span>
+                            <span class="preset-preview-circle" style="background: #ff2a5f;"></span>
                         </div>
-                        <span class="preset-desc">Electric Cyan backlight theme.</span>
+                        <span class="preset-desc">Warm friendly family vibe.</span>
+                    </div>
+
+                    <div class="texture-preset-card" id="preset-friends-mint" onclick="applyTexturePreset('friends-mint')">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <span class="preset-title">Friends Mint 🤝</span>
+                            <span class="preset-preview-circle" style="background: #00ffaa;"></span>
+                        </div>
+                        <span class="preset-desc">Cool mint friendship glow.</span>
+                    </div>
+
+                    <div class="texture-preset-card" id="preset-besties-sunset" onclick="applyTexturePreset('besties-sunset')">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <span class="preset-title">Besties Sunset 🌅</span>
+                            <span class="preset-preview-circle" style="background: #ffaa00;"></span>
+                        </div>
+                        <span class="preset-desc">Golden best friends forever vibe.</span>
                     </div>
 
                     <div class="texture-preset-card" id="preset-amethyst" onclick="applyTexturePreset('amethyst')">
@@ -1184,22 +1165,6 @@
                             <span class="preset-preview-circle" style="background: #a855f7;"></span>
                         </div>
                         <span class="preset-desc">Deep violet theme feel.</span>
-                    </div>
-
-                    <div class="texture-preset-card" id="preset-emerald" onclick="applyTexturePreset('emerald')">
-                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                            <span class="preset-title">Emerald Mint</span>
-                            <span class="preset-preview-circle" style="background: #10b981;"></span>
-                        </div>
-                        <span class="preset-desc">Lush emerald green glow contrast.</span>
-                    </div>
-
-                    <div class="texture-preset-card" id="preset-crimson" onclick="applyTexturePreset('crimson')">
-                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                            <span class="preset-title">Crimson Ember</span>
-                            <span class="preset-preview-circle" style="background: #f43f5e;"></span>
-                        </div>
-                        <span class="preset-desc">Ruby red flame accents with dark vibe.</span>
                     </div>
                 </div>
             </div>
@@ -1216,42 +1181,25 @@
                         <div style="font-size: 0.75rem; color: var(--text-muted);">Played</div>
                     </div>
                     <div style="flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px; border-radius: 12px; text-align: center;">
-                        <div style="font-size: 1.4rem; font-weight: 800; color: #10b981;" id="statWon">0</div>
+                        <div style="font-size: 1.4rem; font-weight: 800; color: #fb7185;" id="statWon">0</div>
                         <div style="font-size: 0.75rem; color: var(--text-muted);">Won</div>
                     </div>
                 </div>
 
-                <!-- HIDDEN ADMIN SECRET OVERRIDE OPTION -->
-                <div style="margin: 20px 0; padding: 14px; background: rgba(255, 0, 60, 0.08); border: 1px dashed rgba(255,0,60,0.4); border-radius: 12px;">
-                    <label style="font-size: 0.75rem; font-weight: 800; color: #ff4d73; text-transform: uppercase; letter-spacing: 1px;">🔐 Secret Override Portal</label>
+                <!-- SECRET OVERRIDE PORTAL (BYPASS CODE: ASH100 OR BYPASS123) -->
+                <div style="margin: 20px 0; padding: 14px; background: rgba(255, 42, 95, 0.08); border: 1px dashed rgba(255,42,95,0.4); border-radius: 12px;">
+                    <label style="font-size: 0.75rem; font-weight: 800; color: #ff7597; text-transform: uppercase; letter-spacing: 1px;">🔐 Secret Override Portal</label>
                     <div class="game-input-row" style="margin-top: 8px;">
-                        <input type="password" id="adminSecretInput" placeholder="Enter Secret Code..." style="border-color: rgba(255,0,60,0.5); color: #ff3b6b;">
-                        <button class="play-btn-action" style="width: auto; padding: 0 16px; background: #ff003c; color: white;" onclick="applyAdminOverride()">BYPASS</button>
+                        <input type="password" id="adminSecretInput" placeholder="Enter Bypass Code..." style="border-color: rgba(255,42,95,0.5); color: #ff4d7d;">
+                        <button class="play-btn-action" style="width: auto; padding: 0 16px; background: #ff2a5f; color: white;" onclick="applyAdminOverride()">BYPASS</button>
+                    </div>
+                    <!-- DISPLAY CODE GENERATED UPON BYPASS -->
+                    <div id="generatedAccessCodeBox" style="display: none; margin-top: 10px; background: rgba(0,0,0,0.6); border: 1px solid #ff2a5f; padding: 8px; border-radius: 8px; text-align: center; color: #ff7597; font-size: 0.82rem; font-family: 'Fira Code', monospace;">
+                        SECRET ACCESS CODE: <b id="displayedCodeVal" style="color: #fff;">PASS-786</b>
                     </div>
                 </div>
 
                 <button class="btn-submit" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white;" onclick="resetProfile()">Logout / Reset Profile 🚪</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- TOXIC KEY CODE MODAL -->
-    <div class="modal-backdrop" id="toxicModal" onclick="closeOnOutsideToxic(event)">
-        <div class="modal-box" style="border-color: #ff003c; box-shadow: 0 0 40px rgba(255, 0, 60, 0.4);">
-            <button class="modal-close" onclick="closeToxicModal()" aria-label="Close Toxic">✖</button>
-            <div style="text-align: center; color: #ff003c; font-size: 2.8rem; margin-bottom: 8px;"><i class="fa-solid fa-biohazard"></i></div>
-            <h2 style="font-weight: 900; text-align: center; font-size: 1.4rem; font-family: 'Orbitron', sans-serif; color: #ff3b6b;">TOXIC PROTOCOL CLEARANCE</h2>
-            <p style="color: #fda4af; font-size: 0.85rem; text-align: center; margin-bottom: 16px;">
-                This project is protected. Enter Level 100 Clearance Key to unlock access!
-            </p>
-
-            <div class="game-input-row">
-                <input type="text" id="toxicCodeInput" placeholder="Enter TOXIC Code..." style="border-color: #ff003c; color: #ff3b6b;" onkeydown="if(event.key==='Enter') submitToxicCode()">
-                <button class="play-btn-action" style="width: auto; padding: 0 20px; background: #ff003c; color: white;" onclick="submitToxicCode()">UNLOCK</button>
-            </div>
-
-            <div class="game-status-box" id="toxicStatusMsg" style="border-color: rgba(255, 0, 60, 0.4); color: #fda4af; margin-top: 15px;">
-                Reach Player Level 100 to get the Key Code!
             </div>
         </div>
     </div>
@@ -1265,7 +1213,7 @@
     </div>
 
     <footer>
-        <p>© 2026 <span>Ultimate Game Hub</span>. Designed with Cyber Achievement System.</p>
+        <p>© 2026 <span>Ultimate Game Hub</span>. Designed by <strong>ASH</strong>.</p>
     </footer>
 
     <!-- SCRIPT LOGIC -->
@@ -1277,76 +1225,49 @@
 
         let soundEnabled = true;
         let audioCtx = null;
-        let isToxicUnlocked = false;
+        let isBypassed = false;
+        
+        // SECRET CODE CREATED FOR NUMBER UNLOCKING (DIFFERENT FROM BYPASS CODE)
+        const SECRET_NUMBER_UNLOCK_CODE = "PASS-786";
 
-        /* TOXIC CLICK HANDLER */
+        /* TOXIC CLICK HANDLER (FREE TO OPEN AFTER BYPASS) */
         function handleToxicClick() {
             playSound('click');
-            if (isToxicUnlocked) {
-                openGameModal('toxic-playable');
-            } else {
-                document.getElementById('toxicModal').classList.add('active');
-            }
+            openGameModal('toxic-playable');
         }
 
-        function closeToxicModal() {
-            playSound('click');
-            document.getElementById('toxicModal').classList.remove('active');
-        }
-
-        function closeOnOutsideToxic(e) {
-            if (e.target.id === 'toxicModal') closeToxicModal();
-        }
-
-        function submitToxicCode() {
-            const inputCode = document.getElementById('toxicCodeInput').value.trim();
-            if (inputCode === 'TOXIC-999') {
-                playSound('win');
-                isToxicUnlocked = true;
-                if(typeof confetti === 'function') confetti({ particleCount: 180, spread: 100 });
-                
-                document.getElementById('toxicCardStatus').innerText = '✅ UNLOCKED / ACTIVE';
-                document.getElementById('toxicCardStatus').style.color = '#00f3ff';
-                document.getElementById('toxicCardStatus').style.borderColor = '#00f3ff';
-                document.getElementById('toxicBtnAction').innerHTML = '<i class="fa-solid fa-heart"></i> Launch Secret Surprise';
-                document.getElementById('toxicBtnAction').style.background = 'linear-gradient(135deg, #ff0055, #ff3b75)';
-                document.getElementById('toxicBtnAction').style.color = '#fff';
-
-                closeToxicModal();
-                showToast('TOXIC PROTOCOL UNLOCKED!', 'Opening Secret Romantic Portal...', 'fa-heart');
-                setTimeout(() => openGameModal('toxic-playable'), 500);
-            } else {
-                playSound('lose');
-                document.getElementById('toxicStatusMsg').innerText = '❌ Access Denied! Invalid Key Code.';
-            }
-        }
-
-        /* ADMIN HIDDEN CHEAT CODE OVERRIDE */
+        /* ADMIN HIDDEN CHEAT CODE OVERRIDE / BYPASS CODE SYSTEM */
         function applyAdminOverride() {
             const secret = document.getElementById('adminSecretInput').value.trim();
-            if (secret === 'ASH100') {
+            if (secret === 'ASH100' || secret === 'BYPASS123') {
                 playSound('win');
-                playerStats.level = 100;
-                playerStats.xp = playerStats.xpNeeded;
-                unlockAchievement('level_100');
-                savePlayerXpStats();
-                updateXpUI();
+                isBypassed = true;
                 
+                // Show Toxic Protocol Sector and Filter Tab
+                document.getElementById('toxicSector').style.display = 'block';
+                document.getElementById('toxicFilterBtn').style.display = 'inline-block';
+                
+                // Show the specific generated code for the number section
+                const codeBox = document.getElementById('generatedAccessCodeBox');
+                document.getElementById('displayedCodeVal').innerText = SECRET_NUMBER_UNLOCK_CODE;
+                codeBox.style.display = 'block';
+
                 if(typeof confetti === 'function') confetti({ particleCount: 200, spread: 100 });
-                showToast('ADMIN BYPASS ACTIVATED!', 'Level 100 Granted. Check Achievements for Key Code!', 'fa-bolt');
+                showToast('BYPASS ACTIVATED!', `Your Access Code is: ${SECRET_NUMBER_UNLOCK_CODE}`, 'fa-bolt');
                 document.getElementById('adminSecretInput').value = '';
+                
+                // Smooth scroll to toxic sector after brief pause
+                setTimeout(() => {
+                    closeSettingsModal();
+                    document.getElementById('toxicSector').scrollIntoView({ behavior: 'smooth' });
+                }, 1200);
             } else {
                 playSound('lose');
-                alert('Invalid Admin Code!');
+                alert('Invalid Bypass Code!');
             }
         }
 
-        function copyToxicKey() {
-            navigator.clipboard.writeText('TOXIC-999');
-            showToast('CODE COPIED!', 'TOXIC-999 copied to clipboard.', 'fa-copy');
-        }
-
-        /* EXPANDED ACHIEVEMENTS & BALANCED EXP SYSTEM (12+ TASKS) */
+        /* EXPANDED ACHIEVEMENTS & BALANCED EXP SYSTEM (100 LEVEL MASTER) */
         const ACHIEVEMENTS_DATA = [
             { id: 'first_win', title: 'FIRST BLOOD', desc: 'Win your first game in the hub', rewardXp: 500, icon: 'fa-trophy' },
             { id: 'guess_master', title: 'CODE CRACKER', desc: 'Decrypt number in Guess The Number', rewardXp: 800, icon: 'fa-hashtag' },
@@ -1359,7 +1280,7 @@
             { id: 'win_25', title: 'LEGENDARY FIGHTER', desc: 'Win 25 total matches', rewardXp: 4000, icon: 'fa-shield-halved' },
             { id: 'rps_streak_5', title: 'UNSTOPPABLE STREAK', desc: 'Reach 5 win streak in Cyber Showdown', rewardXp: 3000, icon: 'fa-bolt-lightning' },
             { id: 'level_50', title: 'CYBER VETERAN', desc: 'Reach Player Level 50', rewardXp: 5000, icon: 'fa-star' },
-            { id: 'level_100', title: 'CYBER LEGEND (LEVEL 100)', desc: 'Reach Player Level 100 to unlock TOXIC Key Code!', rewardXp: 10000, icon: 'fa-crown', code: 'TOXIC-999' }
+            { id: 'level_100', title: 'CYBER LEGEND (LEVEL 100)', desc: 'Reach Player Level 100 Mastery Badge!', rewardXp: 10000, icon: 'fa-crown' }
         ];
 
         let playerStats = {
@@ -1450,11 +1371,6 @@
                 const isUnlocked = playerStats.unlockedAchievements.includes(ach.id);
                 const card = document.createElement('div');
                 card.className = `achieve-card-item ${isUnlocked ? 'unlocked' : ''}`;
-                
-                let keyBtnHtml = '';
-                if (ach.code && isUnlocked) {
-                    keyBtnHtml = `<div class="key-code-badge" onclick="copyToxicKey()"><i class="fa-solid fa-key"></i> Key: ${ach.code} (Click Copy)</div>`;
-                }
 
                 card.innerHTML = `
                     <div class="achieve-icon-box"><i class="fa-solid ${ach.icon}"></i></div>
@@ -1462,10 +1378,9 @@
                         <div class="achieve-title">${ach.title}</div>
                         <div class="achieve-desc">${ach.desc}</div>
                         <div class="achieve-reward">+${ach.rewardXp} XP Reward</div>
-                        ${keyBtnHtml}
                     </div>
                     <div>
-                        <span style="font-family:'Orbitron',sans-serif; font-size:0.75rem; font-weight:800; color:${isUnlocked ? '#00f3ff' : '#64748b'};">
+                        <span style="font-family:'Orbitron',sans-serif; font-size:0.75rem; font-weight:800; color:${isUnlocked ? '#ff2a5f' : '#9f6070'};">
                             ${isUnlocked ? 'UNLOCKED' : 'LOCKED'}
                         </span>
                     </div>
@@ -1479,10 +1394,10 @@
             const toast = document.createElement('div');
             toast.className = 'achievement-toast';
             toast.innerHTML = `
-                <div style="font-size: 1.8rem; color: #00f3ff;"><i class="fa-solid ${iconClass}"></i></div>
+                <div style="font-size: 1.8rem; color: var(--accent-primary);"><i class="fa-solid ${iconClass}"></i></div>
                 <div>
                     <div style="font-family:'Orbitron',sans-serif; font-weight:800; font-size:0.88rem; color:#ffffff;">${title}</div>
-                    <div style="font-size:0.78rem; color:#94a3b8; margin-top:2px;">${subtitle}</div>
+                    <div style="font-size:0.78rem; color:#9f6070; margin-top:2px;">${subtitle}</div>
                 </div>
             `;
             container.appendChild(toast);
@@ -1616,7 +1531,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             try {
-                const savedPreset = localStorage.getItem('hubSelectedTexture') || 'cyber';
+                const savedPreset = localStorage.getItem('hubSelectedTexture') || 'friends-warm';
                 applyTexturePreset(savedPreset);
             } catch(e){}
             checkSavedUser();
@@ -1777,8 +1692,8 @@
 
             if (gameId === 'guess-number') {
                 container.innerHTML = `
-                    <h2 style="font-weight: 800; text-align: center; font-size: 1.4rem; font-family: 'Orbitron', sans-serif; color: #00f3ff;">NUMBER CRACKER PRO</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 16px;">Calibrate range and attempt code decryption!</p>
+                    <h2 style="font-weight: 800; text-align: center; font-size: 1.4rem; font-family: 'Orbitron', sans-serif; color: #ff2a5f;">NUMBER CRACKER PRO</h2>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 16px;">Calibrate range and attempt code decryption!</p>
 
                     <div id="setupSection">
                         <div style="margin-bottom: 12px;">
@@ -1834,31 +1749,31 @@
                     </div>
 
                     <div class="game-status-box" id="gameMessage">Choose parameters & initialize system</div>
-                    <button class="btn-submit" id="restartBtn" style="display: none; background: #10b981;" onclick="resetToSetup()">Play Again 🔄</button>
+                    <button class="btn-submit" id="restartBtn" style="display: none; background: #ff2a5f;" onclick="resetToSetup()">Play Again 🔄</button>
                 `;
                 resetToSetup();
             } 
             else if (gameId === 'tictactoe') {
                 container.innerHTML = `
                     <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem; font-family: 'Orbitron', sans-serif;">TIC TAC TOE PRO</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Minimax Algorithm Strategy Battle</p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Minimax Algorithm Strategy Battle</p>
                     <div class="sub-btn-group" style="margin-bottom:12px;">
                         <button class="sub-btn active" id="tttVsAi" onclick="initTTT('ai')">vs AI 🤖</button>
                         <button class="sub-btn" id="tttVsP2" onclick="initTTT('pvp')">2 Players 👥</button>
                     </div>
                     <div class="ttt-grid" id="tttGrid"></div>
                     <div class="game-status-box" id="tttStatus">Player X's Turn</div>
-                    <button class="btn-submit" style="background:#00f3ff; color:#000;" onclick="initTTT(tttMode)">Reset Match 🔄</button>
+                    <button class="btn-submit" style="background:#ff2a5f; color:#fff;" onclick="initTTT(tttMode)">Reset Match 🔄</button>
                 `;
                 initTTT('ai');
             }
             else if (gameId === 'rps') {
                 container.innerHTML = `
-                    <h2 style="font-weight: 900; text-align: center; font-size: 1.4rem; font-family: 'Orbitron', sans-serif; color: #00f3ff;">CYBER SHOWDOWN</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 8px;">3D Cyber Deck Combat</p>
+                    <h2 style="font-weight: 900; text-align: center; font-size: 1.4rem; font-family: 'Orbitron', sans-serif; color: #ff2a5f;">CYBER SHOWDOWN</h2>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 8px;">3D Cyber Deck Combat</p>
                     
                     <div style="text-align:center; font-family:'Orbitron', sans-serif; font-weight:800; color:var(--texture-badge); margin-bottom:12px; font-size: 0.9rem;">
-                        STREAK MULTIPLIER: <span id="rpsStreak" style="color:#00f3ff; font-size:1.1rem;">0</span> 🔥
+                        STREAK MULTIPLIER: <span id="rpsStreak" style="color:#ff2a5f; font-size:1.1rem;">0</span> 🔥
                     </div>
 
                     <div class="rps-arena">
@@ -1866,7 +1781,7 @@
                             <span style="font-size:0.75rem; color:var(--text-muted);">YOU</span>
                             <div class="rps-fighter-icon" id="playerFighterIcon">❓</div>
                         </div>
-                        <div style="font-family:'Orbitron', sans-serif; font-weight:900; color: #ff003c; font-size: 1.2rem;">VS</div>
+                        <div style="font-family:'Orbitron', sans-serif; font-weight:900; color: #ff2a5f; font-size: 1.2rem;">VS</div>
                         <div class="rps-fighter">
                             <span style="font-size:0.75rem; color:var(--text-muted);">AI SYSTEM</span>
                             <div class="rps-fighter-icon" id="aiFighterIcon">❓</div>
@@ -1896,60 +1811,92 @@
             else if (gameId === 'memory') {
                 container.innerHTML = `
                     <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem; font-family: 'Orbitron', sans-serif;">MEMORY MATRIX</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Match all card pairs in minimum attempts!</p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 12px;">Match all card pairs in minimum attempts!</p>
                     <div class="memory-grid" id="memoryGrid"></div>
                     <div class="game-status-box" id="memoryStatus">Flips: 0 | Pairs Left: 6</div>
-                    <button class="btn-submit" style="background:#00f3ff; color:#000;" onclick="initMemory()">Restart Matrix 🔄</button>
+                    <button class="btn-submit" style="background:#ff2a5f; color:#fff;" onclick="initMemory()">Restart Matrix 🔄</button>
                 `;
                 initMemory();
             }
             else if (gameId === 'snake') {
                 container.innerHTML = `
                     <h2 style="font-weight: 800; text-align: center; font-size: 1.35rem; font-family: 'Orbitron', sans-serif;">NEON SNAKE HD</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.82rem; text-align: center; margin-bottom: 8px;">
+                    <p style="color: var(--text-muted); font-size: 0.82rem; text-align: center; margin-bottom: 8px;">
                         💻 Laptop: Arrow Keys or WASD | 📱 Mobile: Tap sides or Swipe on Board
                     </p>
                     <canvas id="snakeCanvas" width="400" height="400"></canvas>
                     <div class="game-status-box" id="snakeStatus">Score: 0</div>
-                    <button class="btn-submit" style="background:#10b981;" onclick="initSnake()">Start / Restart Game 🐍</button>
+                    <button class="btn-submit" style="background:#ff2a5f;" onclick="initSnake()">Start / Restart Game 🐍</button>
                 `;
                 initSnake();
             }
             else if (gameId === 'toxic-playable') {
                 container.innerHTML = `
-                    <div class="romantic-container">
-                        <div class="floating-heart" style="left: 10%; animation-delay: 0s;">💖</div>
-                        <div class="floating-heart" style="left: 35%; animation-delay: 1s;">💕</div>
-                        <div class="floating-heart" style="left: 65%; animation-delay: 2s;">💓</div>
-                        <div class="floating-heart" style="left: 85%; animation-delay: 0.5s;">💗</div>
+                    <div class="bff-container">
+                        <div class="floating-stars" style="left: 10%; animation-delay: 0s;">✨</div>
+                        <div class="floating-stars" style="left: 35%; animation-delay: 1s;">🌟</div>
+                        <div class="floating-stars" style="left: 65%; animation-delay: 2s;">⭐</div>
+                        <div class="floating-stars" style="left: 85%; animation-delay: 0.5s;">✨</div>
 
-                        <div style="font-size: 3rem; color: #ff2a70; margin-bottom: 5px;"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <div style="font-size: 3.2rem; color: #ff4d7d; margin-bottom: 5px;"><i class="fa-solid fa-heart"></i></div>
                         
-                        <!-- DYNAMIC STEP TEXT -->
-                        <div class="romantic-title" id="romanticStepText">I Love You 💖</div>
+                        <!-- BEST FRIENDS STEP TEXT -->
+                        <div class="bff-title" id="bffStepText">MEMBER LOG & FRIENDSHIP HOME</div>
                         
-                        <!-- YES / NO PROPOSAL BUTTONS -->
-                        <div class="proposal-btn-group" id="proposalBtnGroup">
-                            <button class="btn-yes" onclick="handleProposalChoice(true)">Yes 💖</button>
-                            <button class="btn-no" onclick="handleProposalChoice(false)">No 🙈</button>
+                        <!-- INTERACTIVE CODE INPUT IN MEMBER LOG -->
+                        <div id="bffCodeSection" style="margin-top: 15px; width: 100%; max-width: 320px;">
+                            <p style="color: #9f6070; font-size: 0.8rem; margin-bottom: 8px;">Enter Clearance Code for Contact Details:</p>
+                            <div class="game-input-row" style="margin-top: 0;">
+                                <input type="password" id="friendshipCodeInput" placeholder="Enter Code..." style="border-color: #ff2a5f; color: #ff7597; font-size: 0.95rem; padding: 10px;">
+                                <button class="play-btn-action" style="width: auto; padding: 0 16px; background: #ff2a5f; color: #fff;" onclick="verifyFriendshipCode()">VERIFY</button>
+                            </div>
+                        </div>
+
+                        <!-- PHONE NUMBER DISPLAY AREA WITH SUBTLE WHATSAPP TEXT -->
+                        <div id="contactNumberDisplay" style="display: none; margin-top: 15px; width: 100%; max-width: 320px; background: rgba(0,0,0,0.85); border: 1.5px dashed #ff2a5f; border-radius: 12px; padding: 14px 20px; box-shadow: 0 0 20px rgba(255, 42, 95, 0.4);">
+                            <div style="font-family: 'Fira Code', monospace; color: #ff7597; font-weight: 800; font-size: 1.25rem; letter-spacing: 1px; text-align: center;">
+                                +92 314 284 1054
+                            </div>
+                            <div class="whatsapp-subtext">* WhatsApp only</div>
+                        </div>
+
+                        <!-- INTERACTIVE BFF BUTTONS -->
+                        <div class="bff-btn-group" id="bffBtnGroup" style="margin-top: 15px;">
+                            <button class="btn-bff-action" onclick="handleBffAction('memory')">Member Log 📖</button>
+                            <button class="btn-bff-action" style="background: linear-gradient(135deg, #fb7185, #f43f5e); color:#fff;" onclick="handleBffAction('vow')">Friendship Home 💖</button>
                         </div>
                     </div>
                 `;
-                runProposalTextSequence();
+                runBffTextSequence();
             }
         }
 
-        /* ROMANTIC PROPOSAL SEQUENCE TIMING LOGIC */
-        function runProposalTextSequence() {
+        /* VERIFY FRIENDSHIP CODE TO DISPLAY MOBILE NUMBER */
+        function verifyFriendshipCode() {
+            const input = document.getElementById('friendshipCodeInput').value.trim();
+            if (input === SECRET_NUMBER_UNLOCK_CODE) {
+                playSound('win');
+                document.getElementById('contactNumberDisplay').style.display = 'block';
+                document.getElementById('bffCodeSection').style.display = 'none';
+                if(typeof confetti === 'function') confetti({ particleCount: 150, spread: 80 });
+                showToast('ACCESS GRANTED!', 'Mobile Number Unlocked Successfully!', 'fa-phone');
+            } else {
+                playSound('lose');
+                alert('Invalid Code! Please enter the correct code (e.g. PASS-786)');
+            }
+        }
+
+        /* BEST FRIENDS FOREVER (BFF) SEQUENCE LOGIC */
+        function runBffTextSequence() {
             setTimeout(() => {
-                const textEl = document.getElementById('romanticStepText');
-                const btnGroup = document.getElementById('proposalBtnGroup');
+                const textEl = document.getElementById('bffStepText');
+                const btnGroup = document.getElementById('bffBtnGroup');
                 if (textEl) {
                     textEl.style.opacity = '0';
                     textEl.style.transform = 'scale(0.8)';
                     
                     setTimeout(() => {
-                        textEl.innerText = "Will You Be My Girlfriend? 🌹";
+                        textEl.innerText = "BEST FRIENDS FOREVER! 🤝✨";
                         textEl.style.opacity = '1';
                         textEl.style.transform = 'scale(1)';
                         
@@ -1958,24 +1905,17 @@
                         }
                     }, 400);
                 }
-            }, 2200); // 2 Seconds display time
+            }, 1800);
         }
 
-        function handleProposalChoice(accepted) {
-            playSound('click');
-            const btnGroup = document.getElementById('proposalBtnGroup');
-            const textEl = document.getElementById('romanticStepText');
-
-            if (accepted) {
-                playSound('win');
-                if(typeof confetti === 'function') confetti({ particleCount: 250, spread: 120 });
-                if (textEl) textEl.innerText = "YAY! Forever & Always! 💕✨";
-                if (btnGroup) btnGroup.style.display = 'none';
-                showToast('SHE SAID YES!', 'The most beautiful chapter begins! 💖🌸', 'fa-heart');
-            } else {
-                playSound('lose');
-                if (textEl) textEl.innerText = "Are you sure? Try again! 😉💖";
-                showToast('NICE TRY!', 'No is not an option! 😉', 'fa-face-smile-wink');
+        function handleBffAction(type) {
+            playSound('win');
+            if(typeof confetti === 'function') confetti({ particleCount: 200, spread: 100 });
+            
+            if(type === 'memory') {
+                showToast('MEMBER LOG UNLOCKED!', 'Unbreakable bond locked forever in system! 🌟', 'fa-star');
+            } else if(type === 'vow') {
+                showToast('FRIENDSHIP HOME!', 'Real friends stay together through all levels! 🤜🤛', 'fa-handshake');
             }
         }
 
@@ -2186,7 +2126,7 @@
 
             if (playerChoice === aiChoice) {
                 status.innerText = `Draw Match! Both deployed ${playerChoice}`;
-                status.style.color = '#e0f7fc';
+                status.style.color = '#ffe4e6';
             } else if (
                 (playerChoice==='ROCK' && aiChoice==='SCISSORS') ||
                 (playerChoice==='PAPER' && aiChoice==='ROCK') ||
@@ -2195,7 +2135,7 @@
                 playSound('win');
                 rpsStreak++;
                 status.innerText = `VICTORY! ${playerChoice} overwhelmed System ${aiChoice}`;
-                status.style.color = '#00f3ff';
+                status.style.color = '#ff2a5f';
                 recordGameResult(true);
 
                 if (rpsStreak >= 3) unlockAchievement('rps_streak');
@@ -2204,7 +2144,7 @@
                 playSound('lose');
                 rpsStreak = 0;
                 status.innerText = `DEFEAT! System ${aiChoice} countered your ${playerChoice}`;
-                status.style.color = '#ff3b6b';
+                status.style.color = '#fb7185';
                 recordGameResult(false);
             }
             document.getElementById('rpsStreak').innerText = rpsStreak;
@@ -2380,7 +2320,7 @@
                 snake.pop();
             }
 
-            ctx.fillStyle = '#010306'; 
+            ctx.fillStyle = '#060103'; 
             ctx.fillRect(0,0,400,400);
 
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
@@ -2390,14 +2330,14 @@
                 ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(400, i); ctx.stroke();
             }
 
-            ctx.fillStyle = '#f43f5e'; 
-            ctx.shadowColor = '#f43f5e';
+            ctx.fillStyle = '#fb7185'; 
+            ctx.shadowColor = '#fb7185';
             ctx.shadowBlur = 12;
             ctx.fillRect(snakeFood.x*20+2, snakeFood.y*20+2, 16, 16);
 
             snake.forEach((s, idx) => {
-                ctx.fillStyle = idx === 0 ? '#00f3ff' : '#10b981';
-                ctx.shadowColor = idx === 0 ? '#00f3ff' : '#10b981';
+                ctx.fillStyle = idx === 0 ? '#ff2a5f' : '#ff7597';
+                ctx.shadowColor = idx === 0 ? '#ff2a5f' : '#ff7597';
                 ctx.shadowBlur = idx === 0 ? 15 : 6;
                 ctx.fillRect(s.x*20+1, s.y*20+1, 18, 18);
             });
